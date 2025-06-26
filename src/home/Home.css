@@ -1,0 +1,27 @@
+
+.sales-flash{
+    border: 2px solid green;
+    margin-top: 120px;
+}
+
+.sales-flash .today h2{
+   font-size: 16px;
+   font-weight: 600;
+   color: #DB4444;
+}
+
+.three-sales-titles{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.three-sales-oclock{
+    display: flex;
+}
+
+.three-sales{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
