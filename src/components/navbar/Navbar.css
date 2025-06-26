@@ -1,0 +1,159 @@
+nav{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+    background-color: white;
+}
+
+.nav-top{
+    background-color: #000;
+}
+
+.nav-top .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+
+.nav-top p{
+    color: #FAFAFA;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-top p span{
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.nav-top select{
+    background-color: transparent;
+    color: #FAFAFA;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.nav-bottom{
+    border-bottom: 0.5px solid #000;
+}
+
+.nav-bottom .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 43px;
+    padding-bottom: 20px;
+}
+
+.nav-bottom .logo{
+    font-family: "Inter", sans-serif;
+}
+
+.logo a{
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 3%;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-bottom .links{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.links li {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.links li a {
+    text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #3d3d3d;
+}
+
+.links li a.active {
+  color: #6d6d6d;
+}
+
+.links li a::after {
+  position: absolute;
+  content: " ";
+  bottom: -5px;
+  left: 0px;
+  background-color: #000000;
+  width: 0px;
+  height: 2px;
+  transition: all 0.3s ease;
+}
+
+.links li a.active::after {
+  width: 100%;
+}
+
+
+.nav-bottom .icons{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.icons .search{
+    width: 243px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    padding: 5px 10px 5px 10px
+}
+
+.icons .search input{
+    padding: 4px 5px;
+    color: #000;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.search h5{
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icons input::placeholder{
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+}
+
+.icons p{
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.bosh{
+    width: 100%;
+    height: 150px;
+    background-color: red;
+}
