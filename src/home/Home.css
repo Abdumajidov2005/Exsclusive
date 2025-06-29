@@ -4,7 +4,7 @@
 }
 
 .sales-flash {
-  margin-top: 120px;
+  margin-top: 70px;
 }
 
 .sales-flash2 {
@@ -196,7 +196,6 @@
 .card:hover .addition.watch {
   right: 10px;
   transform: rotate(360deg);
-  transition-delay: 0.4s;
 }
 
 .card:hover {
@@ -366,99 +365,16 @@
   box-shadow: 0px 0px 10px 3px #e07575;
 }
 
-.expriense .container {
-  background-color: #000000;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px 30px;
-  margin-bottom: 40px;
-  margin-top: 130px;
-}
-
-.texts {
-  width: 473px;
-  padding-left: 50px;
-}
-
-.texts h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #00ff66;
-  margin-bottom: 20px;
-}
-
-.texts h1 {
-  font-size: 48px;
-  font-weight: 600;
-  color: #fafafa;
-  line-height: 60px;
-  letter-spacing: 4%;
-  margin-bottom: 30px;
-}
-
-.texts .music-times {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 30px;
-}
-
-.texts .music-times .time {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  line-height: 16px;
-}
-
-.time h2 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #000000;
-}
-
-.time span {
-  font-size: 11px;
-  font-weight: 400;
-  color: #000000;
-}
-
-.texts button {
-  padding: 16px 48px;
-  border-radius: 4px;
-  border: none;
-  background-color: #00ff66;
-  color: white;
-  cursor: pointer;
-}
-
-.expriense-player {
-  width: 600px;
-  height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  object-fit: contain;
-  filter: drop-shadow(0px 0px 80px gray);
-}
-
-.expriense-player img {
-  width: 90%;
-  height: 80%;
-}
-
 .cards:nth-child(2) {
   margin-bottom: 20px;
 }
 
 .today .news {
   margin-bottom: 20px;
+}
+
+.today .our {
+  width: 190px;
 }
 
 .arrival h1 {
@@ -484,6 +400,7 @@
   justify-content: center;
   object-fit: contain;
   position: relative;
+  overflow: hidden;
 }
 
 .station img {
@@ -601,25 +518,25 @@
   position: relative;
 }
 
-.speacers .about1{
+.speacers .about1 {
   position: absolute;
 }
 
-.speacers .about1 h2{
+.speacers .about1 h2 {
   margin-bottom: 10px;
 }
 
-.speacers .about1 p{
+.speacers .about1 p {
   margin-bottom: 10px;
 }
 
-.speacers img{
+.speacers img {
   width: 70%;
   height: 70%;
   filter: drop-shadow(0px 0px 20px gray);
 }
 
-.deliverys .container{
+.deliverys .container {
   padding: 100px 0px;
   display: flex;
   align-items: center;
@@ -627,12 +544,13 @@
   gap: 70px;
 }
 
-.delivery{
-  width: 249px;
+.delivery {
+  width: 259px;
   text-align: center;
 }
 
-.delivery p{
+.delivery p {
+  cursor: pointer;
   width: 58px;
   height: 58px;
   border-radius: 50%;
@@ -647,19 +565,19 @@
   margin: 30px auto;
 }
 
-.delivery p::before{
+.delivery p::before {
   position: absolute;
   content: "";
   z-index: -1;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  top: -13px;
-  left: -12px;
-  background-color: #C1C0C1;
+  top: -12px;
+  left: -11px;
+  background-color: #c1c0c1;
 }
 
-.delivery p::after{
+.delivery p::after {
   position: absolute;
   z-index: -1;
   content: "";
@@ -668,13 +586,13 @@
   background-color: #000000;
 }
 
-.delivery h2{
+.delivery h2 {
   font-size: 20px;
   font-weight: 600;
   color: #000000;
 }
 
-.delivery h5{
+.delivery h5 {
   font-size: 14px;
   font-weight: 400;
   color: #000000;

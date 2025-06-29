@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Hero from "../components/hero/Hero";
 import { FaArrowLeft, FaArrowRight, FaRegHeart, FaStar } from "react-icons/fa";
 import "./Home.css";
-import { LuEye } from "react-icons/lu";
+import { LuEye, LuShieldCheck } from "react-icons/lu";
 import Card from "../components/card/Card";
 import { FaTruckFast } from "react-icons/fa6";
+import { TfiHeadphoneAlt } from "react-icons/tfi";
+import Exprience from "../components/expriense/Exprience";
 
 function Home() {
   const [data, setData] = useState([
@@ -446,41 +448,12 @@ function Home() {
             </div>
           </div>
         </section>
-        <section className="expriense">
-          <div className="container">
-            <div className="texts">
-              <h3>Categories</h3>
-              <h1>Enhance Your Music Experience</h1>
-              <div className="music-times">
-                <div className="time">
-                  <h2>23</h2>
-                  <span>Hours</span>
-                </div>
-                <div className="time">
-                  <h2>23</h2>
-                  <span>Hours</span>
-                </div>
-                <div className="time">
-                  <h2>23</h2>
-                  <span>Hours</span>
-                </div>
-                <div className="time">
-                  <h2>23</h2>
-                  <span>Hours</span>
-                </div>
-              </div>
-              <button>Buy Now!</button>
-            </div>
-            <div className="expriense-player">
-              <img src="/imgs/section.png" alt="" />
-            </div>
-          </div>
-        </section>
+        <Exprience/>
         <section className="products">
           <div className="container">
             <div className="sales-flash sales-flash2">
               <div className="today">
-                <h2 className="category">Our Products</h2>
+                <h2 className="our">Our Products</h2>
               </div>
               <div className="three-sales">
                 <div className="three-sales-titles">
@@ -511,7 +484,7 @@ function Home() {
           <div className="container">
             <div className="arrival">
               <div className="today">
-                <h2 className="news">Our Products</h2>
+                <h2 className="news">Featured</h2>
               </div>
               <h1>New Arrival</h1>
             </div>
@@ -566,19 +539,19 @@ function Home() {
               <h2>FREE AND FAST DELIVERY</h2>
               <h5>Free delivery for all orders over $140</h5>
             </div>
-             <div className="delivery">
+            <div className="delivery">
               <p>
-                <FaTruckFast />
+                <TfiHeadphoneAlt />
               </p>
-              <h2>FREE AND FAST DELIVERY</h2>
-              <h5>Free delivery for all orders over $140</h5>
+              <h2>24/7 CUSTOMER SERVICE</h2>
+              <h5>Friendly 24/7 customer support</h5>
             </div>
-             <div className="delivery">
+            <div className="delivery">
               <p>
-                <FaTruckFast />
+                <LuShieldCheck />
               </p>
-              <h2>FREE AND FAST DELIVERY</h2>
-              <h5>Free delivery for all orders over $140</h5>
+              <h2>MONEY BACK GUARANTEE</h2>
+              <h5>We reurn money within 30 days</h5>
             </div>
           </div>
         </section>

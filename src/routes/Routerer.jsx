@@ -6,6 +6,7 @@ import About from '../about/About'
 import Contact from '../contact/Contact'
 import Servise from '../servise/Servise'
 import Error from '../error/Error'
+import Footer from '../components/footer/Footer'
 
 function Routerer() {
   return (
@@ -21,6 +22,7 @@ function Routerer() {
                <Route path='/servise' element={<Servise/>}/>
                <Route path='*' element={<Error/>}/> 
           </Routes >
+          <Footer/>
       </BrowserRouter>
     </>
   )

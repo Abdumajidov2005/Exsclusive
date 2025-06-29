@@ -1,0 +1,142 @@
+footer {
+  background-color: #000000;
+  color: white;
+}
+
+footer .container {
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
+.linklar {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  padding: 70px 0px;
+  border-bottom: 1px solid #ffffff2f;
+}
+
+.support-link {
+  line-height: 42px;
+}
+
+.support-link:nth-child(1) li:nth-child(1) {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fafafa;
+  margin-bottom: 13px;
+}
+
+.support-link:nth-child(1) li:nth-child(3) .searchs {
+  border: 2px solid #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 210px;
+  border-radius: 4px;
+}
+
+.support-link:nth-child(1) li:nth-child(3) h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fafafa;
+  cursor: auto;
+  margin-bottom: 5px;
+}
+
+.searchs input {
+  padding: 10px 10px;
+  width: 100%;
+  height: 48px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+.searchs input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fafafa4b;
+}
+
+.searchs .send {
+  width: 50px;
+  height: 48px;
+  padding: 3px 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.support-link .asosiy {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fafafa;
+  margin-bottom: 10px;
+}
+
+.support-link li {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fafafa;
+}
+
+.support-link:nth-child(2) li:nth-child(2) {
+  width: 175px;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.support-link:nth-child(5) li:nth-child(2){
+    font-size: 12px;
+    font-weight: 500;
+    color: #fafafa98;
+}
+
+.support-link:nth-child(5) li:nth-child(3){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 188px;
+    cursor: auto;
+}
+
+.support-link:nth-child(5) li:nth-child(3) .qrcode{
+    font-size: 70px;
+    cursor: pointer;
+}
+
+.support-link:nth-child(5) li:nth-child(3) .store{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.store img{
+    width: 104px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.support-link:nth-child(5) li:nth-child(4){
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    cursor: auto;
+}
+
+.support-link:nth-child(5) li:nth-child(4) p{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+  font-size: 16px;
+  font-weight: 400;
+  color: #f9f9f933;
+  text-align: center;
+  padding: 20px 0px;
+}
