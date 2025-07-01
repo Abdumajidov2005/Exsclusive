@@ -31,16 +31,16 @@ function Navbar() {
             </div>
             <ul className="links">
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to={"/"}>Home</NavLink>
               </li>
               <li>
-                <NavLink to="contact">Contact</NavLink>
+                <NavLink to={"contact"}>Contact</NavLink>
               </li>
               <li>
-                <NavLink to="about">About</NavLink>
+                <NavLink to={"about"}>About</NavLink>
               </li>
               <li>
-                <NavLink to="servise">Sign Up</NavLink>
+                <NavLink to={"servise"}>Sign Up</NavLink>
               </li>
             </ul>
             <div className="icons">
@@ -60,7 +60,6 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <div className="bosh"></div>
     </>
   );
 }

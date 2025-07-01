@@ -1,15 +1,15 @@
-.sign-up {
+.login {
   background: linear-gradient(to right, #cbe4e9 50%, white 50%);
 }
 
-.sign-up .container {
+.login .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 30px;
 }
 
-.sign-img {
+.login-img {
   width: 600px;
   height: 550px;
   display: flex;
@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.sign-img img {
+.login-img img {
   top: 0px;
   left: -120px;
   position: absolute;
@@ -27,31 +27,26 @@
   height: 100%;
 }
 
-.sign-infos {
+.login-infos {
   width: 500px;
   height: 460px;
   position: relative;
   overflow: hidden;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
-.thenSigns {
+.thenlogins {
   position: absolute;
-  top: 10px;
+  top: 100px;
   left: 0px;
   width: 341px;
-  transition: all 3s ease;
 }
 
-.thenSigns.multi{
-  right: 1000px;
-}
-
-.thenSigns.resents {
+.thenlogins.resents {
   left: 1000px;
 }
 
-.thenSigns h1 {
+.thenlogins h1 {
   font-size: 36px;
   font-weight: 500;
   color: #000000;
@@ -61,14 +56,14 @@
   margin-bottom: 25px;
 }
 
-.thenSigns h4 {
+.thenlogins h4 {
   font-size: 16px;
   font-weight: 400;
   color: #000000;
   margin-bottom: 34px;
 }
 
-.thenSigns .signUp {
+.thenlogins .loginUp {
   display: flex;
   align-items: start;
   justify-content: left;
@@ -76,8 +71,8 @@
   gap: 10px;
 }
 
-.thenSigns .signUp input {
-  width: 320px;
+.thenlogins .loginUp input {
+  width: 100%;
   border: none;
   outline: none;
   padding: 4px 2px;
@@ -86,56 +81,40 @@
   color: #000000;
 }
 
-.signUp input::placeholder {
+.loginUp input::placeholder {
   font-size: 16px;
   font-weight: 400;
   color: #00000067;
 }
 
-.signUp .accaunt {
-  padding: 16px 104px;
+.btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btns button {
   cursor: pointer;
-  background-color: #db4444;
+  padding: 16px 48px;
   border-radius: 4px;
   border: none;
+  background-color: #db4444;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: #fafafa;
 }
 
-.signUp .withGoogle {
-  padding: 16px 72px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 4px;
+.btns button a {
   font-size: 16px;
-  font-weight: 400;
-  color: #000000;
-  background-color: white;
-}
-
-.signUp .withGoogle svg {
-  font-size: 20px;
-  color: blue;
-}
-
-.thenSigns p {
-  margin-top: 20px;
-  font-size: 16px;  
-  font-weight: 400;
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.thenSigns p span {
-  font-size: 16px;
-  font-weight: 500;
-  color: #000000;
+  font-weight: 600;
   text-decoration: none;
+  color: #fafafa;
+}
+
+.btns p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #db4444;
   cursor: pointer;
 }

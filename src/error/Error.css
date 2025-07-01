@@ -3,11 +3,59 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
 }
 
 .errorPage img{
-    width: 80%;
+    width: 70%;
     height: 550px;
     margin: 0 auto;
     object-fit: contain;
+}
+
+.visit{
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.visit span{
+    color: #00000080;
+    font-size: 14px;
+}
+
+
+.visit a:nth-child(1){
+    color: #00000080;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.visit p{
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.bac-home{
+    position: absolute;
+    bottom: 0px;
+    background-color: #DB4444;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FAFAFA;
+    padding: 16px 48px;
+    border-radius: 4px;
+    border: none;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.bac-home:hover{
+    box-shadow: 0px 0px 10px 3px #DB4444;
 }

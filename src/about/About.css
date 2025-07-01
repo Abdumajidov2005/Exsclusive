@@ -1,0 +1,49 @@
+.about-to-home .container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 60px 0px;
+}
+
+.storys {
+  background: linear-gradient(90deg, white 50%, #e97fa7 50%);
+}
+
+.storys .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.storys-information{
+    width: 525px;
+}
+
+.storys-information h1 {
+  font-size: 54px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.storys-information p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.storys-girls {
+  width: 620px;
+  height: 580px;
+  object-fit: contain;
+  position: relative;
+}
+
+.storys-girls img{
+    position: absolute;
+    top: 0px;
+    right: -100px;
+    width: 110%;
+    height: 100%;
+}

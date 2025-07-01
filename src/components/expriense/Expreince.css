@@ -1,4 +1,4 @@
-.expriense .container {
+.expriense .changeMusic {
   background-color: #000000;
   color: white;
   display: flex;
@@ -7,6 +7,7 @@
   padding: 30px 30px;
   margin-bottom: 40px;
   margin-top: 100px;
+  width: 1200px;
 }
 
 .texts {
@@ -84,3 +85,4 @@
   width: 90%;
   height: 80%;
 }
+
