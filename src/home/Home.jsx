@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../components/hero/Hero";
 import { FaArrowLeft, FaArrowRight, FaRegHeart, FaStar } from "react-icons/fa";
 import "./Home.css";
@@ -7,42 +7,21 @@ import Card from "../components/card/Card";
 import { FaTruckFast } from "react-icons/fa6";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import Exprience from "../components/expriense/Exprience";
+import { getCategory, getProductData } from "../services/api";
 
 function Home() {
-  const [data, setData] = useState([
-    {
-      id: 0,
-      name: "HAVIT HV-G92 Gamepad",
-      price: "160",
-      discount: "80",
-      countes: "88",
-    },
-    {
-      id: 1,
-      name: "AK-900 Wired Keyboard",
-      price: "1260",
-      discount: "35",
-      countes: "88",
-    },
-    {
-      id: 2,
-      name: "IPS LCD Gaming Monitor",
-      price: "460",
-      discount: "20",
-      countes: "88",
-    },
-    {
-      id: 3,
-      name: "S-Series Comfort Chair ",
-      price: "260",
-      discount: "50",
-      countes: "88",
-    },
-  ]);
+
+  const [category, setCategory] = useState(null);
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    getCategory()?.then(setCategory);
+    getProductData()?.then(setProduct);
+  }, []);
 
   return (
     <>
-      <Hero />
+      <Hero category={category} />
       <main>
         <section className="main-products">
           <div className="container">
@@ -87,12 +66,14 @@ function Home() {
               </div>
             </div>
             <div className="cards">
-              {data?.map((item) => {
-                return <Card key={item.id} item={item} />;
+              {product?.slice(0, 4).map((item) => {
+                return <Card key={item.id} product={product} item={item} />;
               })}
             </div>
             <div className="show-more">
-              <button>View All Products</button>
+              <button onClick={()=>{
+                
+              }}>View All Products</button>
             </div>
           </div>
         </section>
@@ -103,7 +84,7 @@ function Home() {
                 <h2 className="category">Categories</h2>
               </div>
               <div className="three-sales">
-                <div className="three-sales-titles">
+                <div className="three-sales-titles browse-by">
                   <h4>Browse By Category</h4>
                 </div>
 
@@ -118,312 +99,14 @@ function Home() {
               </div>
             </div>
             <div className="categorys">
-              <div className="browse">
-                <svg
-                  width="56"
-                  height="56"
-                  viewBox="0 0 56 56"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_3296_2972)">
-                    <path
-                      className="grids"
-                      d="M38.9375 6.125H17.0625C15.5523 6.125 14.3281 7.34922 14.3281 8.85938V47.1406C14.3281 48.6508 15.5523 49.875 17.0625 49.875H38.9375C40.4477 49.875 41.6719 48.6508 41.6719 47.1406V8.85938C41.6719 7.34922 40.4477 6.125 38.9375 6.125Z"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M25.6667 7H31.1354"
-                      stroke="black"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M28 44.0052V44.0305"
-                      stroke="black"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      className="grids"
-                      x1="15.1667"
-                      y1="39.8334"
-                      x2="40.8333"
-                      y2="39.8334"
-                      stroke="black"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3296_2972">
-                      <rect width="56" height="56" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p>Phones</p>
-              </div>
-               <div className="browse">
-                <svg
-                  width="56"
-                  height="56"
-                  viewBox="0 0 56 56"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_3296_2972)">
-                    <path
-                      className="grids"
-                      d="M38.9375 6.125H17.0625C15.5523 6.125 14.3281 7.34922 14.3281 8.85938V47.1406C14.3281 48.6508 15.5523 49.875 17.0625 49.875H38.9375C40.4477 49.875 41.6719 48.6508 41.6719 47.1406V8.85938C41.6719 7.34922 40.4477 6.125 38.9375 6.125Z"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M25.6667 7H31.1354"
-                      stroke="black"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M28 44.0052V44.0305"
-                      stroke="black"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      className="grids"
-                      x1="15.1667"
-                      y1="39.8334"
-                      x2="40.8333"
-                      y2="39.8334"
-                      stroke="black"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3296_2972">
-                      <rect width="56" height="56" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p>Phones</p>
-              </div>
-               <div className="browse">
-                <svg
-                  width="56"
-                  height="56"
-                  viewBox="0 0 56 56"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_3296_2972)">
-                    <path
-                      className="grids"
-                      d="M38.9375 6.125H17.0625C15.5523 6.125 14.3281 7.34922 14.3281 8.85938V47.1406C14.3281 48.6508 15.5523 49.875 17.0625 49.875H38.9375C40.4477 49.875 41.6719 48.6508 41.6719 47.1406V8.85938C41.6719 7.34922 40.4477 6.125 38.9375 6.125Z"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M25.6667 7H31.1354"
-                      stroke="black"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M28 44.0052V44.0305"
-                      stroke="black"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      className="grids"
-                      x1="15.1667"
-                      y1="39.8334"
-                      x2="40.8333"
-                      y2="39.8334"
-                      stroke="black"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3296_2972">
-                      <rect width="56" height="56" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p>Phones</p>
-              </div>
-               <div className="browse">
-                <svg
-                  width="56"
-                  height="56"
-                  viewBox="0 0 56 56"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_3296_2972)">
-                    <path
-                      className="grids"
-                      d="M38.9375 6.125H17.0625C15.5523 6.125 14.3281 7.34922 14.3281 8.85938V47.1406C14.3281 48.6508 15.5523 49.875 17.0625 49.875H38.9375C40.4477 49.875 41.6719 48.6508 41.6719 47.1406V8.85938C41.6719 7.34922 40.4477 6.125 38.9375 6.125Z"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M25.6667 7H31.1354"
-                      stroke="black"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M28 44.0052V44.0305"
-                      stroke="black"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      className="grids"
-                      x1="15.1667"
-                      y1="39.8334"
-                      x2="40.8333"
-                      y2="39.8334"
-                      stroke="black"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3296_2972">
-                      <rect width="56" height="56" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p>Phones</p>
-              </div>
-               <div className="browse">
-                <svg
-                  width="56"
-                  height="56"
-                  viewBox="0 0 56 56"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_3296_2972)">
-                    <path
-                      className="grids"
-                      d="M38.9375 6.125H17.0625C15.5523 6.125 14.3281 7.34922 14.3281 8.85938V47.1406C14.3281 48.6508 15.5523 49.875 17.0625 49.875H38.9375C40.4477 49.875 41.6719 48.6508 41.6719 47.1406V8.85938C41.6719 7.34922 40.4477 6.125 38.9375 6.125Z"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M25.6667 7H31.1354"
-                      stroke="black"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M28 44.0052V44.0305"
-                      stroke="black"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      className="grids"
-                      x1="15.1667"
-                      y1="39.8334"
-                      x2="40.8333"
-                      y2="39.8334"
-                      stroke="black"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3296_2972">
-                      <rect width="56" height="56" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p>Phones</p>
-              </div>
-               <div className="browse">
-                <svg
-                  width="56"
-                  height="56"
-                  viewBox="0 0 56 56"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_3296_2972)">
-                    <path
-                      className="grids"
-                      d="M38.9375 6.125H17.0625C15.5523 6.125 14.3281 7.34922 14.3281 8.85938V47.1406C14.3281 48.6508 15.5523 49.875 17.0625 49.875H38.9375C40.4477 49.875 41.6719 48.6508 41.6719 47.1406V8.85938C41.6719 7.34922 40.4477 6.125 38.9375 6.125Z"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M25.6667 7H31.1354"
-                      stroke="black"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      className="grids"
-                      d="M28 44.0052V44.0305"
-                      stroke="black"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      className="grids"
-                      x1="15.1667"
-                      y1="39.8334"
-                      x2="40.8333"
-                      y2="39.8334"
-                      stroke="black"
-                      strokeWidth="2"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3296_2972">
-                      <rect width="56" height="56" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                <p>Phones</p>
-              </div>
+              {category?.map((item, index) => {
+                return (
+                  <div key={index} className="browse">
+                    <img src={item?.image} alt="" />
+                    <p>{item?.title}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -434,7 +117,7 @@ function Home() {
                 <h2 className="category">This Month</h2>
               </div>
               <div className="three-sales">
-                <div className="three-sales-titles">
+                <div className="three-sales-titles browse-by">
                   <h4>Best Selling Products</h4>
                 </div>
 
@@ -442,13 +125,13 @@ function Home() {
               </div>
             </div>
             <div className="cards">
-              {data?.map((item) => {
+              {product?.map((item) => {
                 return <Card key={item.id} item={item} />;
               })}
             </div>
           </div>
         </section>
-        <Exprience/>
+        <Exprience />
         <section className="products">
           <div className="container">
             <div className="sales-flash sales-flash2">
@@ -456,7 +139,7 @@ function Home() {
                 <h2 className="our">Our Products</h2>
               </div>
               <div className="three-sales">
-                <div className="three-sales-titles">
+                <div className="three-sales-titles browse-by">
                   <h4>Explore Our Products</h4>
                 </div>
 
@@ -471,7 +154,7 @@ function Home() {
               </div>
             </div>
             <div className="cards">
-              {data?.map((item) => {
+              {product?.map((item) => {
                 return <Card key={item.id} item={item} />;
               })}
             </div>

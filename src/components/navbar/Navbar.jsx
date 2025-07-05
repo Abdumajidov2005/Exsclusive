@@ -1,11 +1,17 @@
-import React from "react";
-import { FaRegHeart } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
-import { RiShoppingCart2Line } from "react-icons/ri";
+import { RiShoppingBag3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
+import { FiUser } from "react-icons/fi";
+import { FaRegCircleXmark } from "react-icons/fa6";
+import { IoIosStarOutline } from "react-icons/io";
+import { TbLogout2 } from "react-icons/tb";
 
 function Navbar() {
+  const [userModal, setUserModal] = useState(false);
+
   return (
     <>
       <nav>
@@ -56,10 +62,46 @@ function Navbar() {
               <p>
                 <RiShoppingCart2Line />
               </p>
+              <p
+                className="users"
+                onClick={() => {
+                  if (userModal == true) {
+                    setUserModal(false);
+                  } else {
+                    setUserModal(true);
+                  }
+                }}
+              >
+                <FiUser />
+              </p>
             </div>
           </div>
         </div>
       </nav>
+      <div className={`user-modal ${userModal == true ? "active" : ""}`}>
+        <ul>
+          <li>
+            <Link onClick={()=>{
+              setUserModal(false)
+            }} to={"/account"}>
+              <FaRegUser /> Manage My Account
+            </Link>
+          </li>
+          <li>
+            <RiShoppingBag3Fill />
+            My Order
+          </li>
+          <li>
+            <FaRegCircleXmark /> My Cancellations
+          </li>
+          <li>
+            <IoIosStarOutline /> My Reviews
+          </li>
+          <li>
+            <TbLogout2 /> Logout
+          </li>
+        </ul>
+      </div>
     </>
   );
 }

@@ -7,6 +7,7 @@
 .hero-menu {
   width: 260px;
   border-right: 0.5px solid #000000;
+  height: 400px;
 }
 
 .menu-bar {
@@ -14,7 +15,7 @@
 }
 
 .menu-bar li {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 400;
@@ -22,6 +23,13 @@
   transition: all 0.3s ease;
   width: 250px;
   padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-bar li img{
+  width: 20px;
 }
 
 .menu-bar li:hover {

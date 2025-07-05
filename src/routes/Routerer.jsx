@@ -8,6 +8,7 @@ import Servise from '../servise/Servise'
 import Error from '../error/Error'
 import Footer from '../components/footer/Footer'
 import Login from '../components/login/Login'
+import Account from '../account/Account'
 
 function Routerer() {
   return (
@@ -22,6 +23,7 @@ function Routerer() {
                <Route path='/contact' element={<Contact/>}/>
                <Route path='/servise' element={<Servise/>}/>
                <Route path='/login' element={<Login/>}/>
+               <Route path='/account' element={<Account/>}/>
                <Route path='*' element={<Error/>}/> 
           </Routes >
           <Footer/>

@@ -4,6 +4,10 @@
     justify-content: center;
     width: 100%;
     position: relative;
+    margin-top: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px rgba(128, 128, 128, 0.232);
+    backdrop-filter: blur(3px);
 }
 
 .errorPage img{
@@ -20,6 +24,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 0px 30px;
 }
 
 .visit span{
@@ -27,11 +32,15 @@
     font-size: 14px;
 }
 
+.visit a:nth-child(1):hover{
+    color: red;
+}
 
 .visit a:nth-child(1){
     color: #00000080;
     text-decoration: none;
     cursor: pointer;
+    transition: all .3s ease;
 }
 
 .visit p{
@@ -54,6 +63,7 @@
     border: none;
     text-decoration: none;
     transition: all .3s ease;
+    margin-bottom: 20px;
 }
 
 .bac-home:hover{

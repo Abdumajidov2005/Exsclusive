@@ -1,34 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Hero.css";
 import { BsApple } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-function Hero() {
+function Hero({category}) {
+
+
   return (
     <>
       <div className="hero">
         <div className="container">
           <div className="hero-menu">
             <ul className="menu-bar">
-              <li>Woman’s Fashion</li>
-              <li>Men’s Fashion</li>
-              <li>Electronics</li>
-              <li>Home & Lifestyle</li>
-              <li>Medicine</li>
-              <li>Sports & Outdoor</li>
-              <li>Baby’s & Toys</li>
-              <li>Groceries & Pets</li>
-              <li>Health & Beauty</li>
+              {
+              category?.map((item, index) => {
+                return <li key={index}> <img src={item?.image} alt="" /> {item?.title}</li>;
+              })
+              }
             </ul>
           </div>
           <div className="output">
