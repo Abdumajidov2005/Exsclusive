@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./Hero.css";
 import { BsApple } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
@@ -11,20 +10,46 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-function Hero({category}) {
-
-
+function Hero({ category, categoryLoading }) {
   return (
     <>
       <div className="hero">
         <div className="container">
           <div className="hero-menu">
             <ul className="menu-bar">
-              {
-              category?.map((item, index) => {
-                return <li key={index}> <img src={item?.image} alt="" /> {item?.title}</li>;
-              })
-              }
+              {categoryLoading ? (
+                <div className="category-loads">
+                  <div className="category-loads-puts">
+                    <div className="circle-loaders"></div>
+                    <div className="lines-loaders"></div>
+                  </div>
+                   <div className="category-loads-puts">
+                    <div className="circle-loaders"></div>
+                    <div className="lines-loaders"></div>
+                  </div>
+                   <div className="category-loads-puts">
+                    <div className="circle-loaders"></div>
+                    <div className="lines-loaders"></div>
+                  </div>
+                   <div className="category-loads-puts">
+                    <div className="circle-loaders"></div>
+                    <div className="lines-loaders"></div>
+                  </div>
+                   <div className="category-loads-puts">
+                    <div className="circle-loaders"></div>
+                    <div className="lines-loaders"></div>
+                  </div>
+                </div>
+              ) : (
+                category?.map((item) => {
+                  return (
+                    <li key={item.id}>
+                      {" "}
+                      <img src={item?.image} alt="" /> {item?.title}
+                    </li>
+                  );
+                })
+              )}
             </ul>
           </div>
           <div className="output">

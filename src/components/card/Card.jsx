@@ -2,15 +2,21 @@ import React from "react";
 import "./Card.css";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
-import { baseUrl } from "../../config";
+import { baseUrl } from "../../services/config";
+import { Link } from "react-router-dom";
 
-function Card({item}) {
-    
+function Card({ item }) {
   return (
     <>
-      <div key={item.id} className="card">
+      <Link to={"/deteils"} key={item.id} className="card">
+      
         <div className="card-img">
-          <div className="addition price-prsent">-{item?.discount_percent}%</div>
+          {item?.discount_price > 0 && item?.discount_percent > 0 && (
+            <div className="addition price-prsent">
+              -{item.discount_percent}%
+            </div>
+          )}
+
           <div className="addition heart">
             <FaRegHeart />
           </div>
@@ -21,9 +27,13 @@ function Card({item}) {
           <div className="btn">Add To Cart</div>
         </div>
         <div className="card-infos">
-          <h4>{item?.title.slice(0, 26)}</h4>
+          <h4>
+            {item.title.length <= 26
+              ? item.title
+              : item?.title.slice(0, 26) + "..."}
+          </h4>
           <p className="price">
-            ${Math.floor((item.price * item.discount_price) / 100)} <span>${item?.price}</span>
+            ${item.discount_price} <span>${item?.price}</span>
           </p>
           <div className="stars">
             <p>
@@ -36,7 +46,7 @@ function Card({item}) {
             <span>({item?.review_quantity})</span>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

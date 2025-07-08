@@ -28,7 +28,7 @@
   gap: 10px;
 }
 
-.menu-bar li img{
+.menu-bar li img {
   width: 20px;
 }
 
@@ -117,7 +117,6 @@
   color: #f5f5f5;
 }
 
-
 .output .swiper-button-next {
   right: 0px;
   color: #f5f5f5;
@@ -132,4 +131,56 @@
 .output .swiper-pagination-bullet-active {
   background-color: #db4444;
   border: 2px solid white;
+}
+
+.category-loads-puts {
+  width: 90%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.circle-loaders {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderhero 30s linear infinite;
+}
+
+.lines-loaders {
+  width: 85%;
+  height: 20px;
+  animation: loaderhero 30s linear infinite;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+
+  background-size: 500%;
+}
+
+@keyframes loaderhero {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 300%;
+  }
+  100% {
+    background-position: 0%;
+  }
 }
