@@ -86,7 +86,7 @@ function Home() {
             <div className="cards">
               {moreiInfo ? (
                 product?.slice(0).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return <Card key={item.id} item={item}/>;
                 })
               ) : cardLoad ? (
                 <div className="card-loaderss-mark">
@@ -121,7 +121,7 @@ function Home() {
                 </div>
               ) : (
                 product?.slice(0, 4).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return <Card key={item.id} item={item}  />;
                 })
               )}
             </div>
@@ -274,7 +274,7 @@ function Home() {
                 </div>
               ) : (
                 product?.slice(0, 4).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return <Card key={item.id} item={item}/>;
                 })
               )}
             </div>
@@ -305,7 +305,7 @@ function Home() {
             <div className="cards">
               {moreiInfo3 ? (
                 product?.slice(0).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return <Card key={item.id} item={item}/>;
                 })
               ) : cardLoad ? (
                 <div className="card-loaderss-mark">
@@ -368,7 +368,7 @@ function Home() {
                 </div>
               ) : (
                 product?.slice(0, 8).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return <Card key={item.id} item={item}/>;
                 })
               )}
             </div>

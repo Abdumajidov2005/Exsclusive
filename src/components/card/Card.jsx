@@ -6,10 +6,15 @@ import { baseUrl } from "../../services/config";
 import { Link } from "react-router-dom";
 
 function Card({ item }) {
+
+
   return (
     <>
-      <Link to={"/deteils"} key={item.id} className="card">
-      
+      <Link
+        to={`/deteils/${item?.id}`}
+        key={item?.id}
+        className="card"
+      >
         <div className="card-img">
           {item?.discount_price > 0 && item?.discount_percent > 0 && (
             <div className="addition price-prsent">
@@ -17,23 +22,35 @@ function Card({ item }) {
             </div>
           )}
 
-          <div className="addition heart">
+          <p
+            className="addition heart"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
             <FaRegHeart />
-          </div>
+          </p>
           <div className="addition watch">
             <LuEye />
           </div>
           <img src={`${baseUrl}${item?.pictures[0]}`} alt="" />
-          <div className="btn">Add To Cart</div>
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className="btn"
+          >
+            Add To Cart
+          </div>
         </div>
         <div className="card-infos">
           <h4>
-            {item.title.length <= 26
-              ? item.title
+            {item?.title.length <= 26
+              ? item?.title
               : item?.title.slice(0, 26) + "..."}
           </h4>
           <p className="price">
-            ${item.discount_price} <span>${item?.price}</span>
+            ${item?.discount_price} <span>${item?.price}</span>
           </p>
           <div className="stars">
             <p>

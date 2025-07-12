@@ -20,7 +20,6 @@
 
 .responces .responces-imageses {
   width: 700px;
-  border: 2px solid red;
 }
 
 .responces-imageses {
@@ -56,11 +55,10 @@
 .responces-imageses-mains {
   width: 500px;
   height: 600px;
-  border: 2px solid green;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .responces-imageses-mains img {
@@ -70,120 +68,229 @@
 }
 
 .responces .recponces-remember {
-  border: 2px solid red;
   width: 430px;
 }
 
-.recponces-remember h1{
-    font-size: 24px;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 10px;
+.recponces-remember h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 10px;
 }
 
-.stockes{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+.stockes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.stockes p:nth-child(1){
-    color: #FFAD33;
-    font-size: 16px;
+.stockes p:nth-child(1) {
+  color: #ffad33;
+  font-size: 16px;
 }
 
-.stockes p:nth-child(2){
-    color: #000000;
-    font-size: 14px;
-    font-weight: 400;
+.stockes p:nth-child(2) {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
 }
 
-.stockes p:nth-child(3){
-    font-size: 14px;
-    font-weight: 400;
-    color: #00FF66;
-    padding-left: 10px;
-    border-left: 1px solid #000000;
+.stockes p:nth-child(3) {
+  font-size: 14px;
+  font-weight: 400;
+  color: #00ff66;
+  padding-left: 10px;
+  border-left: 1px solid #000000;
 }
 
-.recponce-prises{
-    font-size: 24px;
-    font-weight: 400;
-    color: #000000;
-    margin-bottom: 10px;
+.recponce-prises {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 10px;
 }
 
-.decription{
-    font-size: 14px;
-    font-weight: 400;
-    color: #000000;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #000000;
+.decription {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #000000;
 }
 
 .colors {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0px;
 }
 
-.colors p:nth-child(1){
-   font-size: 20px;
-   font-weight: 400;
-   color: #000000;
+.colors p:nth-child(1) {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
 }
 
-.colors p:nth-child(2){
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.colors p:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.colors p:nth-child(2) span{
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: red;
-    cursor: pointer;
+.colors p:nth-child(2) span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
 }
 
 .sizes {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.sizes h3{
-    font-size: 20px;
-    font-weight: 400;
-    color: #000000;
+.sizes h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
 }
 
-.sizes .kattalik{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.sizes .kattalik {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.kattalik p{
-    width: 32px;
-    height: 32px;
-    border: 1px solid #00000080;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 5px;
-    color: #000000;
-    transition: all .3s ease;
-    cursor: pointer;
+.kattalik p {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #00000080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: #000000;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.kattalik p:hover{
-    background-color: #DB4444;
-    color: white;
+.kattalik p:hover {
+  background-color: #db4444;
+  border-color: #db4444;
+  color: white;
+}
+
+.recponce-buying {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0px;
+}
+
+.counter {
+  width: 159px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter span {
+  width: 40px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #00000080;
+  cursor: pointer;
+  border-radius: 0px 4px 4px 0px;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #000000;
+}
+
+.counter span:nth-child(1) {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.counter span:hover {
+  background-color: #db4444;
+  color: #f5f5f5;
+  border-color: #db4444;
+}
+.counter p {
+  width: 80px;
+  height: 44px;
+  border-top: 1px solid #00000080;
+  border-bottom: 1px solid #00000080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.recponce-buying button {
+  padding: 10px 48px;
+  background-color: #db4444;
+  border-radius: 4px;
+  color: #fafafa;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.recponce-buying .heart {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #00000080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 20px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.recponce-delivery {
+  width: 100%;
+  border: 1px solid #00000080;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.recponce-delivery:nth-child(1) {
+  border-radius: 4px 4px 0px 0px;
+}
+
+.recponce-delivery:nth-child(2) {
+  border-radius: 0px 0px 4px 4px;
+  border-top: 0px;
+}
+
+.recponce-delivery  h4{
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.recponce-delivery p{
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: underline;
+}
+
+.recponce-delivery .icons{
+  font-size: 30px;
 }

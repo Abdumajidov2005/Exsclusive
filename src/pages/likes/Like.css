@@ -1,0 +1,13 @@
+.likes .container{
+    margin-top: 30px;
+}
+
+.views{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.show-mores{
+    padding: 0px;
+}

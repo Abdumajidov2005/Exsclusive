@@ -1,40 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Deteils.css";
 import { TiStarFullOutline } from "react-icons/ti";
 import { FiHeart } from "react-icons/fi";
 import { FaTruckFast } from "react-icons/fa6";
 import { LuRefreshCcw } from "react-icons/lu";
+import { useParams } from "react-router-dom";
+import { getProductData, productDetails } from "../../services/api";
+import { baseUrl } from "../../services/config";
+import Card from "../../components/card/Card";
 
 function Deteils() {
+  const { id } = useParams();
+  const [oneProductData, setProductData] = useState(null);
+  const [mainImg, setMainImg] = useState(null);
+  const [getOneProduct, setGetOneProduct] = useState([])
+
+  useEffect(() => {
+    productDetails(id)?.then((data) => {
+      setProductData(data);
+      setMainImg(data?.pictures[0]?.file)
+    });
+    getProductData().then()
+  }, [id]);
+
   return (
     <>
       <div className="product-details">
         <div className="container">
           <div className="section-detailas">
-            <p>Account</p>/<p>Gaming</p>/<p>Havic HV G-92 Gamepad</p>
+            <p>Account</p>/<p>{oneProductData?.category?.title}</p>/<p>fsdfsdfsd</p>
           </div>
           <div className="responces">
             <div className="responces-imageses">
               <div className="responces-imageses-types">
-                <div className="types-selections">
-                  <img src="/imgs/det1.png" alt="" />
-                </div>
-                <div className="types-selections">
-                  <img src="/imgs/det2.png" alt="" />
-                </div>
-                 <div className="types-selections">
-                  <img src="/imgs/det3.png" alt="" />
-                </div>
-                 <div className="types-selections">
-                  <img src="/imgs/det4.png" alt="" />
-                </div>
+                {oneProductData?.pictures?.map((item, index) => {
+                  return (
+                    <div key={index} onClick={()=>{
+                        setMainImg(item?.file)
+                    }} className="types-selections">
+                      <img src={`${baseUrl}${item?.file}`} alt="" />
+                    </div>
+                  );
+                })}
               </div>
               <div className="responces-imageses-mains">
-                <img src="/imgs/det1.png" alt="" />
+                <img
+                  src={`${baseUrl}${mainImg}`}
+                  alt=""
+                />
               </div>
             </div>
             <div className="recponces-remember">
-              <h1>Havic HV G-92 Gamepad</h1>
+              <h1>{oneProductData?.title}</h1>
               <div className="stockes">
                 <p>
                   <TiStarFullOutline />
@@ -43,15 +60,11 @@ function Deteils() {
                   <TiStarFullOutline />
                   <TiStarFullOutline />
                 </p>
-                <p>(150 Reviews)</p>
+                <p>(43 Reviews)</p>
                 <p>In Stock</p>
               </div>
-              <h4 className="recponce-prises">$192.00</h4>
-              <p className="decription">
-                PlayStation 5 Controller Skin High quality vinyl with air
-                channel adhesive for easy bubble free install & mess free
-                removal Pressure sensitive.
-              </p>
+              <h4 className="recponce-prises">{oneProductData?.price}</h4>
+              <p className="decription">{oneProductData?.description <= 70 ? oneProductData?.description : oneProductData?.description.slice(0, 150)+"..."}</p>
               <div className="colors">
                 <p>Colours:</p>
                 <p>
@@ -63,10 +76,10 @@ function Deteils() {
                 <h3>Size:</h3>
                 <div className="kattalik">
                   <p>XL</p>
-                  <p>M</p>
-                  <p>XS</p>
-                  <p>L</p>
                   <p>S</p>
+                  <p>L</p>
+                  <p>XS</p>
+                 
                 </div>
               </div>
               <div className="recponce-buying">
@@ -100,6 +113,11 @@ function Deteils() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="related">
+            <div className="cards">
+                
             </div>
           </div>
         </div>
