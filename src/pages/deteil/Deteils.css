@@ -24,7 +24,7 @@
 
 .responces-imageses {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 
@@ -44,12 +44,39 @@
   justify-content: center;
   background-color: #f5f5f5;
   border-radius: 4px;
+  border: 1px solid #f5f5f5;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  animation: change ease-in-out 5s infinite;
+}
+
+.types-selections:hover {
+  box-shadow: 0px 0px 7px 3px #00000030;
 }
 
 .types-selections img {
   width: 80%;
   height: 80%;
   object-fit: contain;
+}
+
+@keyframes change {
+  0% {
+    border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  }
+  25% {
+    border-radius: 30% 70% 45% 55% / 78% 30% 70% 22%;
+  }
+  50% {
+    border-radius: 11% 89% 22% 78% / 44% 33% 67% 56%;
+  }
+  75% {
+    border-radius: 38% 62% 70% 30% / 78% 74% 26% 22%;
+  }
+  100% {
+    border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  }
 }
 
 .responces-imageses-mains {
@@ -59,6 +86,9 @@
   align-items: center;
   justify-content: center;
   background-color: #f5f5f5;
+  border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  animation: change ease-in-out 5s infinite;
+  overflow: hidden;
 }
 
 .responces-imageses-mains img {
@@ -117,6 +147,13 @@
   color: #000000;
   padding-bottom: 20px;
   border-bottom: 1px solid #000000;
+}
+
+.decription span {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-left: 10px;
 }
 
 .colors {
@@ -278,19 +315,19 @@
   border-top: 0px;
 }
 
-.recponce-delivery  h4{
+.recponce-delivery h4 {
   font-size: 16px;
   font-weight: 500;
   color: #000000;
 }
 
-.recponce-delivery p{
+.recponce-delivery p {
   font-size: 12px;
   font-weight: 500;
   color: #000000;
   text-decoration: underline;
 }
 
-.recponce-delivery .icons{
+.recponce-delivery .icons {
   font-size: 30px;
 }

@@ -42,9 +42,6 @@
   width: 341px;
 }
 
-.thenlogins.resents {
-  left: 1000px;
-}
 
 .thenlogins h1 {
   font-size: 36px;
@@ -79,6 +76,33 @@
   border-bottom: 1px solid #000000;
   margin-bottom: 14px;
   color: #000000;
+}
+
+.LoginPasswordDetail{
+  width: 100%;
+  position: relative;
+}
+
+.LoginPasswordDetail .LoginPasswordInputs{
+  padding-right: 35px !important;
+}
+
+
+.LoginPasswordDetail span{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: #000000;
+  cursor: pointer;
 }
 
 .loginUp input::placeholder {

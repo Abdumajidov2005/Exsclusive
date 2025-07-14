@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 function Hero({ category, categoryLoading }) {
   return (
@@ -23,19 +24,19 @@ function Hero({ category, categoryLoading }) {
                     <div className="circle-loaders"></div>
                     <div className="lines-loaders"></div>
                   </div>
-                   <div className="category-loads-puts">
+                  <div className="category-loads-puts">
                     <div className="circle-loaders"></div>
                     <div className="lines-loaders"></div>
                   </div>
-                   <div className="category-loads-puts">
+                  <div className="category-loads-puts">
                     <div className="circle-loaders"></div>
                     <div className="lines-loaders"></div>
                   </div>
-                   <div className="category-loads-puts">
+                  <div className="category-loads-puts">
                     <div className="circle-loaders"></div>
                     <div className="lines-loaders"></div>
                   </div>
-                   <div className="category-loads-puts">
+                  <div className="category-loads-puts">
                     <div className="circle-loaders"></div>
                     <div className="lines-loaders"></div>
                   </div>
@@ -43,10 +44,11 @@ function Hero({ category, categoryLoading }) {
               ) : (
                 category?.map((item) => {
                   return (
-                    <li key={item.id}>
-                      {" "}
-                      <img src={item?.image} alt="" /> {item?.title}
-                    </li>
+                    <Link key={item?.id} to={`/category/${item?.id}`}>
+                      <li key={item.id}>
+                        <img src={item?.image} alt="" /> {item?.title}
+                      </li>
+                    </Link>
                   );
                 })
               )}

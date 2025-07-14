@@ -1,28 +1,29 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./SignUp.css";
+import { BsGoogle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { baseUrl } from "../../services/config";
-import { getToken, setToken } from "../../services/token";
 import { toast } from "react-toastify";
 
-function Login({setUserToken}) {
+function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
+  const [first_name, setFirstName] = useState(null);
   const [email_or_phone, setEmailOrPhone] = useState(null);
   const [password, setPassword] = useState(null);
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const toggledPasword = () => {
     setShowPassword((prev) => !prev);
   };
 
-  const login = () => {
+  const signUp = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
+      first_name: first_name,
       email_or_phone: email_or_phone,
       password: password,
     });
@@ -34,18 +35,16 @@ function Login({setUserToken}) {
       redirect: "follow",
     };
 
-    fetch(`${baseUrl}/user/token/`, requestOptions)
+    fetch(`${baseUrl}/user/register/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        if (Array.isArray(result?.non_field_errors) && result.non_field_errors.length > 0) {
-          toast.error(result?.non_field_errors[0]);
-        } else if(result?.access) {
-          setToken(result?.access);
-          toast.success("ro'yxatdan o'tildi");
-          setUserToken(getToken())
-          navigate("/")
-        }else{
-          toast.error("Xatolik yuz berdi qayta urinib ko'ring")
+        if (result?.message) {
+          toast.success(result?.message);
+          navigate("/login");
+        } else if (result?.email_or_phone[0]) {
+          toast.error(result?.email_or_phone[0]);
+        } else if (result?.password[0]) {
+          toast.error(result?.password[0]);
         }
       })
       .catch((error) => console.error(error));
@@ -53,37 +52,44 @@ function Login({setUserToken}) {
 
   return (
     <>
-      <div className="login">
+      <div className="sign-up">
         <div className="container">
-          <div className="login-img">
+          <div className="sign-img">
             <img src="/imgs/sign.png" alt="banner" />
           </div>
-          <div className="login-infos">
-            <div className="thenlogins ">
-              <h1>Log in to Exclusive</h1>
+          <div className="sign-infos">
+            <div className="thenSigns">
+              <h1>Create an account</h1>
               <h4>Enter your details below</h4>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  login();
+                  signUp();
                 }}
-                className="loginUp"
+                className="signUp"
                 action="#"
               >
                 <input
-                  onInput={(e) => {
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="Name"
+                />
+                <input
+                  onChange={(e) => {
                     setEmailOrPhone(e.target.value);
                   }}
                   type="text"
                   placeholder="Email or Phone Number"
                 />
-                <div className="LoginPasswordDetail">
+                <div className="passwordDetail">
                   <input
-                    className="LoginPasswordInputs"
-                    onInput={(e) => {
+                    className="passwordInputs"
+                    type={showPassword ? "password" : "text"}
+                    onChange={(e) => {
                       setPassword(e.target.value);
                     }}
-                    type={showPassword ? "password" : "text"}
                     placeholder="Password"
                   />
                   <span
@@ -99,11 +105,15 @@ function Login({setUserToken}) {
                     {showPassword ? <LuEyeClosed /> : <LuEye />}
                   </span>
                 </div>
-                <div className="btns">
-                  <button>Login</button>
-                  <p>Forget Password?</p>
-                </div>
+                <button className="accaunt">Create Account</button>
+                <button className="withGoogle">
+                  <BsGoogle />
+                  Sign up with Google
+                </button>
               </form>
+              <p>
+                Already have account? <Link to={"/login"}>Log in</Link>
+              </p>
             </div>
           </div>
         </div>
@@ -112,4 +122,4 @@ function Login({setUserToken}) {
   );
 }
 
-export default Login;
+export default SignUp;

@@ -1,0 +1,36 @@
+.categoryFilter .container{
+   margin-top: 30px;
+}
+
+.categoryFilter h2{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.categoryFilter h2 a{
+    text-decoration: none;
+    color: #000;
+    transition: all .3s ease;
+}
+
+.categoryFilter h2 a:hover{
+    color: #bab9b9;
+}
+
+.categoryFilter h2 span{
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.categoryFilter h2 span:hover{
+    color: #bab9b9;
+}
+
+.categoryFilter h2 span:nth-child(2){
+    cursor: none;
+    font-size: 12px;
+}

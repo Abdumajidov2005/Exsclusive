@@ -26,6 +26,7 @@ function Card({ item }) {
             className="addition heart"
             onClick={(e) => {
               e.preventDefault();
+              
             }}
           >
             <FaRegHeart />

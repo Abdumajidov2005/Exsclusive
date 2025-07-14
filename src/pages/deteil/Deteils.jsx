@@ -13,14 +13,14 @@ function Deteils() {
   const { id } = useParams();
   const [oneProductData, setProductData] = useState(null);
   const [mainImg, setMainImg] = useState(null);
-  const [getOneProduct, setGetOneProduct] = useState([])
+  const [readMore, setReadMore] = useState(null);
 
   useEffect(() => {
     productDetails(id)?.then((data) => {
       setProductData(data);
-      setMainImg(data?.pictures[0]?.file)
+      setMainImg(data?.pictures[0]?.file);
     });
-    getProductData().then()
+    getProductData().then();
   }, [id]);
 
   return (
@@ -28,26 +28,30 @@ function Deteils() {
       <div className="product-details">
         <div className="container">
           <div className="section-detailas">
-            <p>Account</p>/<p>{oneProductData?.category?.title}</p>/<p>fsdfsdfsd</p>
+            <p>Account</p>/<p>{oneProductData?.category?.title}</p>/
+            <p>{oneProductData?.title}</p>
           </div>
           <div className="responces">
             <div className="responces-imageses">
               <div className="responces-imageses-types">
                 {oneProductData?.pictures?.map((item, index) => {
                   return (
-                    <div key={index} onClick={()=>{
-                        setMainImg(item?.file)
-                    }} className="types-selections">
+                    <div
+                      key={index}
+                      onClick={() => {
+                        setMainImg(item?.file);
+                      }}
+                      className="types-selections"
+                    >
                       <img src={`${baseUrl}${item?.file}`} alt="" />
                     </div>
                   );
                 })}
               </div>
               <div className="responces-imageses-mains">
-                <img
-                  src={`${baseUrl}${mainImg}`}
-                  alt=""
-                />
+               {
+                mainImg &&  <img src={`${baseUrl}${mainImg}`} alt="" />
+               }
               </div>
             </div>
             <div className="recponces-remember">
@@ -60,11 +64,36 @@ function Deteils() {
                   <TiStarFullOutline />
                   <TiStarFullOutline />
                 </p>
-                <p>(43 Reviews)</p>
+                <p>({oneProductData?.review_quantity} Reviews)</p>
                 <p>In Stock</p>
               </div>
               <h4 className="recponce-prises">{oneProductData?.price}</h4>
-              <p className="decription">{oneProductData?.description <= 70 ? oneProductData?.description : oneProductData?.description.slice(0, 150)+"..."}</p>
+              <p className="decription">
+                {readMore
+                  ? oneProductData?.description
+                  : oneProductData?.description.length < 100
+                  ? oneProductData?.description
+                  : oneProductData?.description.slice(0, 250) + "...."}
+                {oneProductData?.description.length < 100 ? (
+                  ""
+                ) : readMore ? (
+                  <span
+                    onClick={() => {
+                      setReadMore(false);
+                    }}
+                  >
+                    ReadLess
+                  </span>
+                ) : (
+                  <span
+                    onClick={() => {
+                      setReadMore(true);
+                    }}
+                  >
+                    ReadMore
+                  </span>
+                )}
+              </p>
               <div className="colors">
                 <p>Colours:</p>
                 <p>
@@ -79,7 +108,6 @@ function Deteils() {
                   <p>S</p>
                   <p>L</p>
                   <p>XS</p>
-                 
                 </div>
               </div>
               <div className="recponce-buying">
@@ -116,9 +144,7 @@ function Deteils() {
             </div>
           </div>
           <div className="related">
-            <div className="cards">
-                
-            </div>
+            <div className="cards"></div>
           </div>
         </div>
       </div>

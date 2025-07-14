@@ -150,16 +150,14 @@
   cursor: pointer;
 }
 
-
 /* card uchun stillar */
 
 .cards {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 38px;
 }
 
 .cards:nth-child(2) {
@@ -172,6 +170,7 @@
   transition: all 0.3s ease;
   border-radius: 4px;
   text-decoration: none;
+  margin-bottom: 20px;
 }
 
 .addition {
@@ -660,22 +659,19 @@
 }
 
 .card-loaderss-patch span:nth-child(1) {
-  width: 120px;
+  width: 140px;
   height: 120px;
-  border-radius: 50%;
-  border: 14px solid rgb(160, 158, 158);
-  border-top: 14px solid rgb(81, 80, 80);
-  animation: loadpatch 2s linear infinite;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderpath2 10s linear infinite;
   margin-bottom: 30px;
-}
-
-@keyframes loadpatch {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .card-loaderss-patch span:nth-child(2) {
@@ -691,7 +687,7 @@
     gray
   );
   background-size: 500%;
-  animation: loaderpath2 30s linear infinite;
+  animation: loaderpath2 10s linear infinite;
 }
 
 .card-loaderss-patch span:nth-child(3) {
@@ -723,7 +719,7 @@
     gray
   );
   background-size: 500%;
-  animation: loaderpath2 30s linear infinite;
+  animation: loaderpath2 10s linear infinite;
 }
 
 .card-loaderss-patch span:nth-child(5) {
@@ -739,7 +735,7 @@
     gray
   );
   background-size: 500%;
-  animation: loaderpath2 30s linear infinite;
+  animation: loaderpath2 10s linear infinite;
 }
 
 @keyframes loaderpath2 {
@@ -774,20 +770,8 @@
 
 .category-card-loadings-subs span:nth-child(1) {
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 8px solid rgb(160, 158, 158);
-  border-top: 8px solid rgb(81, 80, 80);
-  animation: loadpatch 2s linear infinite;
-  margin-bottom: 20px;
-}
-
-.category-card-loadings-subs span:nth-child(2) {
-  display: inline-block;
-  width: 100px;
-  height: 20px;
-  border-radius: 4px;
+  width: 70px;
+  height: 70px;
   background: linear-gradient(
     45deg,
     rgb(197, 197, 197),
@@ -796,15 +780,7 @@
     rgb(161, 161, 161),
     gray
   );
+  border-radius: 5px;
   background-size: 500%;
-  animation: loaderpath2 30s linear infinite;
-}
-
-@keyframes loadpatch {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  animation: loaderpath2 10s linear infinite;
 }

@@ -21,7 +21,7 @@ useEffect(()=>{
              <div className="today">
                 <h2 className="category">Just For You</h2>
               </div>
-             <div className="show-mores">
+             <div className="show-more show-mores">
               {moreiInfo4 ? (
                 <button
                   onClick={() => {

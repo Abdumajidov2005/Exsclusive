@@ -11,13 +11,17 @@
 }
 
 .menu-bar {
-  margin-top: 30px;
+  margin-top: 40px;
+}
+
+.menu-bar a{
+  text-decoration: none;
 }
 
 .menu-bar li {
-  margin-bottom: 20px;
+  margin-bottom:30px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   color: #000000;
   transition: all 0.3s ease;
@@ -29,7 +33,7 @@
 }
 
 .menu-bar li img {
-  width: 20px;
+  width: 30px;
 }
 
 .menu-bar li:hover {
@@ -135,15 +139,15 @@
 
 .category-loads-puts {
   width: 90%;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .circle-loaders {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background: linear-gradient(
     45deg,
@@ -158,8 +162,9 @@
 }
 
 .lines-loaders {
-  width: 85%;
+  width: 83%;
   height: 20px;
+  border-radius: 3px;
   animation: loaderhero 30s linear infinite;
   background: linear-gradient(
     45deg,
