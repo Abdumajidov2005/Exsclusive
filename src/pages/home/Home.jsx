@@ -8,11 +8,12 @@ import { getCategory, getProductData } from "../../services/api";
 import Exprience from "../../components/expriense/Exprience";
 import Hero from "../../components/hero/Hero";
 import Card from "../../components/card/Card";
+import ShopModal from "../../components/shopModal/ShopModal";
+import { Link } from "react-router-dom";
 
-function Home() {
+function Home({setProduct, product, cardLoad, setCardLoad}) {
   const [category, setCategory] = useState([]);
-  const [product, setProduct] = useState([]);
-  const [cardLoad, setCardLoad] = useState(false);
+  // const [product, setProduct] = useState([]);
   const [categoryLoading, setCategoryLoading] = useState(false);
   const [categoryLoadingCard, setCategoryLoadingCard] = useState(false);
 
@@ -36,11 +37,15 @@ function Home() {
   const [moreiInfo, setMoreInfo] = useState(false);
   const [moreiInfo2, setMoreInfo2] = useState(false);
   const [moreiInfo3, setMoreInfo3] = useState(false);
+  const [modalProduct, setModalProduct] = useState(false);
 
   return (
     <>
       <Hero category={category} categoryLoading={categoryLoading} />
       <main>
+        <div className={`modal-oyna ${modalProduct ? "tojoin" : ""}`}>
+          <ShopModal />
+        </div>
         <section className="main-products">
           <div className="container">
             <div className="sales-flash">
@@ -86,7 +91,13 @@ function Home() {
             <div className="cards">
               {moreiInfo ? (
                 product?.slice(0).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return (
+                    <Card
+                      key={item.id}
+                      item={item}
+                      setModalProduct={setModalProduct}
+                    />
+                  );
                 })
               ) : cardLoad ? (
                 <div className="card-loaderss-mark">
@@ -121,7 +132,13 @@ function Home() {
                 </div>
               ) : (
                 product?.slice(0, 4).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return (
+                    <Card
+                      key={item.id}
+                      item={item}
+                      setModalProduct={setModalProduct}
+                    />
+                  );
                 })
               )}
             </div>
@@ -189,10 +206,10 @@ function Home() {
               ) : (
                 category?.map((item) => {
                   return (
-                    <div key={item.id} className="browse">
+                    <Link to={`/category/${item?.id}`} key={item.id} className="browse">
                       <img src={item?.image} alt="" />
                       <p>{item?.title}</p>
-                    </div>
+                    </Link>
                   );
                 })
               )}
@@ -234,7 +251,13 @@ function Home() {
             <div className="cards">
               {moreiInfo2 ? (
                 product?.slice(0).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return (
+                    <Card
+                      key={item.id}
+                      item={item}
+                      setModalProduct={setModalProduct}
+                    />
+                  );
                 })
               ) : cardLoad ? (
                 <div className="card-loaderss-mark">
@@ -269,7 +292,13 @@ function Home() {
                 </div>
               ) : (
                 product?.slice(0, 4).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return (
+                    <Card
+                      key={item.id}
+                      item={item}
+                      setModalProduct={setModalProduct}
+                    />
+                  );
                 })
               )}
             </div>
@@ -300,7 +329,13 @@ function Home() {
             <div className="cards">
               {moreiInfo3 ? (
                 product?.slice(0).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return (
+                    <Card
+                      key={item.id}
+                      item={item}
+                      setModalProduct={setModalProduct}
+                    />
+                  );
                 })
               ) : cardLoad ? (
                 <div className="card-loaderss-mark">
@@ -363,7 +398,13 @@ function Home() {
                 </div>
               ) : (
                 product?.slice(0, 8).map((item) => {
-                  return <Card key={item.id} item={item} />;
+                  return (
+                    <Card
+                      key={item.id}
+                      item={item}
+                      setModalProduct={setModalProduct}
+                    />
+                  );
                 })
               )}
             </div>

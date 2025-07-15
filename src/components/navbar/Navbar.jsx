@@ -2,16 +2,20 @@ import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { RiShoppingBag3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import "./Navbar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { IoIosStarOutline } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
 
-function Navbar({ userModal, setUserModal, userToken, setUserToken }) {
-
-
-
+function Navbar({
+  userModal,
+  setUserModal,
+  userToken,
+  setUserToken,
+  filterData,
+}) {
+  const navigate = useNavigate();
   return (
     <>
       <nav>
@@ -51,7 +55,14 @@ function Navbar({ userModal, setUserModal, userToken, setUserToken }) {
             </ul>
             <div className="icons">
               <div className="search">
-                <input type="text" placeholder="What are you looking for?" />
+                <input
+                  onInput={(e) => {
+                    filterData(e.target.value);
+                    navigate("/searchs");
+                  }}
+                  type="text"
+                  placeholder="What are you looking for?"
+                />
                 <h5>
                   <LuSearch />
                 </h5>

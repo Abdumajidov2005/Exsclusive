@@ -1,20 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.css";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { baseUrl } from "../../services/config";
 import { Link } from "react-router-dom";
 
-function Card({ item }) {
-
-
+function Card({ item, setModalProduct }) {
   return (
     <>
-      <Link
-        to={`/deteils/${item?.id}`}
-        key={item?.id}
-        className="card"
-      >
+      <Link to={`/deteils/${item?.id}`} key={item?.id} className="card">
         <div className="card-img">
           {item?.discount_price > 0 && item?.discount_percent > 0 && (
             <div className="addition price-prsent">
@@ -26,18 +20,18 @@ function Card({ item }) {
             className="addition heart"
             onClick={(e) => {
               e.preventDefault();
-              
             }}
           >
             <FaRegHeart />
           </p>
-          <div className="addition watch">
+          <p className="addition watch">
             <LuEye />
-          </div>
+          </p>
           <img src={`${baseUrl}${item?.pictures[0]}`} alt="" />
           <div
             onClick={(e) => {
-              e.preventDefault();
+              e.preventDefault()
+              setModalProduct(true);
             }}
             className="btn"
           >
