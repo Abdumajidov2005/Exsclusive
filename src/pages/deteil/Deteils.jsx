@@ -5,22 +5,24 @@ import { FiHeart } from "react-icons/fi";
 import { FaTruckFast } from "react-icons/fa6";
 import { LuRefreshCcw } from "react-icons/lu";
 import { useParams } from "react-router-dom";
-import { getProductData, productDetails } from "../../services/api";
+import { productDetails } from "../../services/api";
 import { baseUrl } from "../../services/config";
-import Card from "../../components/card/Card";
+import { toast } from "react-toastify";
 
 function Deteils() {
   const { id } = useParams();
   const [oneProductData, setProductData] = useState(null);
-  const [mainImg, setMainImg] = useState(null);
-  const [readMore, setReadMore] = useState(null);
+  const [mainImg, setMainImg] = useState("");
+  const [readMore, setReadMore] = useState(false);
+  const [count, setCount] = useState(1);
+  const [sizeAdd, setSizeAdd] = useState(null);
+  const [colorAdd, setColorAdd] = useState(null);
 
   useEffect(() => {
     productDetails(id)?.then((data) => {
       setProductData(data);
       setMainImg(data?.pictures[0]?.file);
     });
-    getProductData().then();
   }, [id]);
 
   return (
@@ -49,9 +51,7 @@ function Deteils() {
                 })}
               </div>
               <div className="responces-imageses-mains">
-               {
-                mainImg &&  <img src={`${baseUrl}${mainImg}`} alt="" />
-               }
+                {mainImg && <img src={`${baseUrl}${mainImg}`} alt="" />}
               </div>
             </div>
             <div className="recponces-remember">
@@ -67,7 +67,9 @@ function Deteils() {
                 <p>({oneProductData?.review_quantity} Reviews)</p>
                 <p>In Stock</p>
               </div>
-              <h4 className="recponce-prises">{oneProductData?.price}</h4>
+              <h4 className="recponce-prises">
+                {oneProductData?.price ? oneProductData.price * count : 0}
+              </h4>
               <p className="decription">
                 {readMore
                   ? oneProductData?.description
@@ -97,24 +99,65 @@ function Deteils() {
               <div className="colors">
                 <p>Colours:</p>
                 <p>
-                  <span></span>
-                  <span></span>
+                  {oneProductData?.properties?.color?.map((item, index) => {
+                    return (
+                      <span
+                        onClick={() => {
+                          setColorAdd(item);
+                        }}
+                        key={index}
+                        className={`color-select ${
+                          colorAdd == item ? "tanlash" : ""
+                        }`}
+                      >
+                        {item}
+                      </span>
+                    );
+                  })}
                 </p>
               </div>
               <div className="sizes">
                 <h3>Size:</h3>
                 <div className="kattalik">
-                  <p>XL</p>
-                  <p>S</p>
-                  <p>L</p>
-                  <p>XS</p>
+                  {oneProductData?.properties?.size?.map((item, index) => {
+                    return (
+                      <p
+                        onClick={() => {
+                          setSizeAdd(item);
+                        }}
+                        className={`sizeeffect ${
+                          sizeAdd === item ? "designation" : ""
+                        }`}
+                        key={index}
+                      >
+                        {item}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
               <div className="recponce-buying">
                 <div className="counter">
-                  <span>-</span>
-                  <p>0</p>
-                  <span>+</span>
+                  <span
+                    onClick={() => {
+                      if (count > 1) {
+                        setCount(count - 1);
+                      } else {
+                        count == 1;
+                        toast.warning("Maxsulot qo'shing");
+                      }
+                    }}
+                  >
+                    -
+                  </span>
+                  <p>{count}</p>
+                  <span
+                    onClick={() => {
+                      setCount(count + 1);
+                    }}
+                  >
+                    +
+                  </span>
                 </div>
                 <button>Buy Now</button>
                 <div className="heart">

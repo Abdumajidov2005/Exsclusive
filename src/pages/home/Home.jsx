@@ -11,9 +11,16 @@ import Card from "../../components/card/Card";
 import ShopModal from "../../components/shopModal/ShopModal";
 import { Link } from "react-router-dom";
 
-function Home({setProduct, product, cardLoad, setCardLoad}) {
+function Home({
+  setProduct,
+  product,
+  cardLoad,
+  setCardLoad,
+  modalProduct,
+  setModalProduct,
+  setLikeData
+}) {
   const [category, setCategory] = useState([]);
-  // const [product, setProduct] = useState([]);
   const [categoryLoading, setCategoryLoading] = useState(false);
   const [categoryLoadingCard, setCategoryLoadingCard] = useState(false);
 
@@ -37,14 +44,13 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
   const [moreiInfo, setMoreInfo] = useState(false);
   const [moreiInfo2, setMoreInfo2] = useState(false);
   const [moreiInfo3, setMoreInfo3] = useState(false);
-  const [modalProduct, setModalProduct] = useState(false);
 
   return (
     <>
       <Hero category={category} categoryLoading={categoryLoading} />
       <main>
         <div className={`modal-oyna ${modalProduct ? "tojoin" : ""}`}>
-          <ShopModal />
+          <ShopModal setModalProduct={setModalProduct} />
         </div>
         <section className="main-products">
           <div className="container">
@@ -95,7 +101,9 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
                     <Card
                       key={item.id}
                       item={item}
+                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setLikeData={setLikeData}
                     />
                   );
                 })
@@ -136,7 +144,9 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
                     <Card
                       key={item.id}
                       item={item}
+                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setLikeData={setLikeData}
                     />
                   );
                 })
@@ -206,7 +216,11 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
               ) : (
                 category?.map((item) => {
                   return (
-                    <Link to={`/category/${item?.id}`} key={item.id} className="browse">
+                    <Link
+                      to={`/category/${item?.id}`}
+                      key={item.id}
+                      className="browse"
+                    >
                       <img src={item?.image} alt="" />
                       <p>{item?.title}</p>
                     </Link>
@@ -255,7 +269,9 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
                     <Card
                       key={item.id}
                       item={item}
+                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setLikeData={setLikeData}
                     />
                   );
                 })
@@ -296,7 +312,9 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
                     <Card
                       key={item.id}
                       item={item}
+                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setLikeData={setLikeData}
                     />
                   );
                 })
@@ -333,7 +351,9 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
                     <Card
                       key={item.id}
                       item={item}
+                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setLikeData={setLikeData}
                     />
                   );
                 })
@@ -402,7 +422,9 @@ function Home({setProduct, product, cardLoad, setCardLoad}) {
                     <Card
                       key={item.id}
                       item={item}
+                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setLikeData={setLikeData}
                     />
                   );
                 })

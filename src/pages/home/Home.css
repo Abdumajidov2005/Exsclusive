@@ -217,7 +217,8 @@
 }
 
 .addition.heart,
-.addition.watch {
+.addition.watch,
+.addition.trash {
   top: 10px;
   right: 10px;
   width: 34px;
@@ -234,7 +235,8 @@
 }
 
 .addition.heart:hover,
-.addition.watch:hover {
+.addition.watch:hover ,
+.addition.trash:hover{
   box-shadow: 0px 0px 5px 1px #c5c4c4;
 }
 
@@ -253,6 +255,15 @@
 }
 
 .card:hover .addition.watch {
+  right: 10px;
+  transform: rotate(360deg);
+}
+
+.addition.trash{
+    right: -100px;
+}
+
+.card:hover .addition.trash {
   right: 10px;
   transform: rotate(360deg);
 }

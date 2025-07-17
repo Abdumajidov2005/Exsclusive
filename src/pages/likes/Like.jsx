@@ -1,24 +1,83 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
-import { getProductData } from "../../services/api";
 import "./Like.css";
 import ShopModal from "../../components/shopModal/ShopModal";
+import LikeCard from "../../likeCard/LikeCard";
+import { GoHeartFill } from "react-icons/go";
 
-function Like() {
-  const [product, setProduct] = useState([]);
+function Like({
+  product,
+  cardLoad3,
+  likeData,
+  setLikeData,
+  setProduct,
+  cardLoad4,
+}) {
   const [moreiInfo4, setMoreInfo4] = useState(false);
-  const [cardLoad, setCardLoad] = useState(false);
   const [modalProduct, setModalProduct] = useState(false);
 
-  useEffect(() => {
-    getProductData()
-      .then(setProduct)
-      .finally(() => setCardLoad(false));
-  }, []);
   return (
     <>
       <div className="likes">
         <div className="container">
+          <div className="add-to-wishlist">
+            <div className="cards">
+              {cardLoad4 ? (
+                <div className="card-loaderss-mark">
+                  <div className="card-loaderss-patch">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div className="card-loaderss-patch">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div className="card-loaderss-patch">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div className="card-loaderss-patch">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              ) : likeData?.length === 0 ? (
+                <div className="tugadi">
+                  <div className="like-gif">
+                     <img src="/imgs/like.gif" alt="" />
+                  </div>
+                 <div className="like-infogif">
+                  <p> Sevimli mahsulotlar yo'q</p>
+                  <p> Mahsulotdagi <span><GoHeartFill /></span> belgisi bilan qo'shing️</p>
+                 </div>
+                </div>
+              ) : (
+                likeData?.map((item) => {
+                  return (
+                    <LikeCard
+                      setLikeData={setLikeData}
+                      setProduct={setProduct}
+                      setModalProduct={setModalProduct}
+                      key={item?.id}
+                      item={item}
+                    />
+                  );
+                })
+              )}
+            </div>
+          </div>
           <div className="views">
             <div className="today">
               <h2 className="category">Just For You</h2>
@@ -46,9 +105,17 @@ function Like() {
           <div className="cards">
             {moreiInfo4 ? (
               product?.slice(0).map((item) => {
-                return <Card key={item.id} item={item} />;
+                return (
+                  <Card
+                    key={item.id}
+                    item={item}
+                    setLikeData={setLikeData}
+                    setProduct={setProduct}
+                    setModalProduct={setModalProduct}
+                  />
+                );
               })
-            ) : cardLoad ? (
+            ) : cardLoad3 ? (
               <div className="card-loaderss-mark">
                 <div className="card-loaderss-patch">
                   <span></span>
@@ -81,7 +148,15 @@ function Like() {
               </div>
             ) : (
               product?.slice(0, 4).map((item) => {
-                return <Card key={item.id} item={item} setModalProduct={setModalProduct}/>;
+                return (
+                  <Card
+                    key={item.id}
+                    item={item}
+                    setModalProduct={setModalProduct}
+                    setLikeData={setLikeData}
+                    setProduct={setProduct}
+                  />
+                );
               })
             )}
           </div>
@@ -98,7 +173,7 @@ function Like() {
               exit
             </p>
             <p>Modal oyna ichida ShopModal yoki boshqa komponent</p>
-            <ShopModal/>
+            <ShopModal />
           </div>
         </div>
       </div>

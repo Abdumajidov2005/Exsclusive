@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Search.css";
 import Card from "../../components/card/Card";
 
-function Search({ searchFilterData , cardLoad}) {
+function Search({ searchFilterData, cardLoad2, setLikeData, setProduct }) {
   const [modalProduct, setModalProduct] = useState(false);
 
   return (
@@ -10,37 +10,48 @@ function Search({ searchFilterData , cardLoad}) {
       <div className="search-page">
         <div className="container">
           <div className="cards">
-            {cardLoad ? (
+            {cardLoad2 ? (
               <div className="card-loaderss-mark">
-                  <div className="card-loaderss-patch">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div className="card-loaderss-patch">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div className="card-loaderss-patch">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div className="card-loaderss-patch">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
+                <div className="card-loaderss-patch">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </div>
+                <div className="card-loaderss-patch">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="card-loaderss-patch">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="card-loaderss-patch">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            ) : searchFilterData?.length === 0 ? (
+              <div className="topilmadi">
+                <div className="search-gif">
+                  <img src="/imgs/search.gif" alt="" />
+                </div>
+                <h2>Afsus maxsulotlar topilmadi</h2>
+                <p>
+                  Tovar nomini to'g'riligini tekshiring yoki boshqa so'z bilan
+                  qidirib ko'ring
+                </p>
+              </div>
             ) : (
               searchFilterData?.map((item) => {
                 return (
@@ -48,11 +59,12 @@ function Search({ searchFilterData , cardLoad}) {
                     item={item}
                     key={item?.id}
                     setModalProduct={setModalProduct}
+                    setProduct={setProduct}
+                    setLikeData={setLikeData}
                   />
                 );
               })
             )}
-
           </div>
         </div>
       </div>

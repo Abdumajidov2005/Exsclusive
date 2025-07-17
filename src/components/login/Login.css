@@ -42,7 +42,6 @@
   width: 341px;
 }
 
-
 .thenlogins h1 {
   font-size: 36px;
   font-weight: 500;
@@ -78,17 +77,16 @@
   color: #000000;
 }
 
-.LoginPasswordDetail{
+.LoginPasswordDetail {
   width: 100%;
   position: relative;
 }
 
-.LoginPasswordDetail .LoginPasswordInputs{
+.LoginPasswordDetail .LoginPasswordInputs {
   padding-right: 35px !important;
 }
 
-
-.LoginPasswordDetail span{
+.LoginPasswordDetail span {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -127,13 +125,10 @@
   font-size: 16px;
   font-weight: 600;
   color: #fafafa;
-}
-
-.btns button a {
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  color: #fafafa;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btns p {

@@ -1,18 +1,26 @@
 import React from "react";
 import "./ShopModal.css";
+import { FaXmark } from "react-icons/fa6";
 
-function ShopModal() {
+function ShopModal({ setModalProduct }) {
   return (
     <>
       <div className="shopModal">
-        <div className="container">'
-           <p onClick={()=>{
-             
-           }}>
-            exit
-           </p>
-            <h1>salom</h1>
-        </div>
+        <p
+          onClick={() => {
+            setModalProduct(false);
+          }}
+        >
+          <FaXmark />
+        </p>
+         <div className="shop-modal-img">
+            <div className="shop-modal-imgs">
+                 <img src="/imgs/det1.png" alt="" />
+            </div>
+            <button>
+               Show More
+            </button>
+         </div>
       </div>
     </>
   );

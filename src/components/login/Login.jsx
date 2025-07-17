@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 
 function Login({setUserToken}) {
   const [showPassword, setShowPassword] = useState(false);
-  const [email_or_phone, setEmailOrPhone] = useState(null);
-  const [password, setPassword] = useState(null);
-
+  const [email_or_phone, setEmailOrPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate()
 
@@ -19,6 +19,7 @@ function Login({setUserToken}) {
   };
 
   const login = () => {
+    setIsLoading(true)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -37,18 +38,21 @@ function Login({setUserToken}) {
     fetch(`${baseUrl}/user/token/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        if (Array.isArray(result?.non_field_errors) && result.non_field_errors.length > 0) {
+        if (Array.isArray(result?.non_field_errors) && result?.non_field_errors.length > 0) {
           toast.error(result?.non_field_errors[0]);
         } else if(result?.access) {
           setToken(result?.access);
-          toast.success("ro'yxatdan o'tildi");
           setUserToken(getToken())
+          toast.success("ro'yxatdan o'tildi");
           navigate("/")
         }else{
           toast.error("Xatolik yuz berdi qayta urinib ko'ring")
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(()=>{
+        setIsLoading(false)
+      })
   };
 
   return (
@@ -100,7 +104,11 @@ function Login({setUserToken}) {
                   </span>
                 </div>
                 <div className="btns">
-                  <button>Login</button>
+                  <button>
+                    {
+                      isLoading ? "Yuklanmoqda...": "Login"
+                    }
+                    </button>
                   <p>Forget Password?</p>
                 </div>
               </form>

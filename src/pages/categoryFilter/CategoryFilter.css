@@ -34,3 +34,117 @@
     cursor: none;
     font-size: 12px;
 }
+
+.card-loaderss-mark {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between !important;
+}
+
+.card-loaderss-patch {
+  border: 1px solid rgb(182, 182, 182);
+  width: 270px;
+  height: 353px;
+  border-radius: 4px;
+  padding: 20px 20px;
+}
+
+.card-loaderss-patch span {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.card-loaderss-patch span:nth-child(1) {
+  width: 140px;
+  height: 120px;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderpath2 10s linear infinite;
+  margin-bottom: 30px;
+}
+
+.card-loaderss-patch span:nth-child(2) {
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderpath2 10s linear infinite;
+}
+
+.card-loaderss-patch span:nth-child(3) {
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderpath2 10s linear infinite;
+}
+
+.card-loaderss-patch span:nth-child(4) {
+  width: 50%;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderpath2 10s linear infinite;
+}
+
+.card-loaderss-patch span:nth-child(5) {
+  width: 70%;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(
+    45deg,
+    rgb(197, 197, 197),
+    rgb(197, 196, 196),
+    rgb(186, 185, 185),
+    rgb(161, 161, 161),
+    gray
+  );
+  background-size: 500%;
+  animation: loaderpath2 10s linear infinite;
+}
+
+@keyframes loaderpath2 {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 300%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}

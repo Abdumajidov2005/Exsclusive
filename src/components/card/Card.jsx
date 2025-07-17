@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Card.css";
-import { FaRegHeart, FaStar } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { baseUrl } from "../../services/config";
 import { Link } from "react-router-dom";
+import { deleteLike, oneLikeData, productDetails } from "../../services/api";
 
-function Card({ item, setModalProduct }) {
+function Card({ item, setModalProduct, setProduct, setLikeData }) {
   return (
     <>
       <Link to={`/deteils/${item?.id}`} key={item?.id} className="card">
@@ -16,22 +17,39 @@ function Card({ item, setModalProduct }) {
             </div>
           )}
 
-          <p
-            className="addition heart"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <FaRegHeart />
-          </p>
-          <p className="addition watch">
-            <LuEye />
-          </p>
+          <div>
+            <p
+              className="addition heart"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              {item?.is_liked ? (
+                <FaHeart
+                  onClick={() => {
+                    deleteLike(item?.id, setProduct, setLikeData);
+                  }}
+                  style={{ color: "red" }}
+                />
+              ) : (
+                <FaRegHeart
+                  onClick={() => {
+                    oneLikeData(item?.id, setProduct, setLikeData);
+                  }}
+                />
+              )}
+            </p>
+            <p className="addition watch">
+              <LuEye />
+            </p>
+          </div>
+
           <img src={`${baseUrl}${item?.pictures[0]}`} alt="" />
           <div
             onClick={(e) => {
-              e.preventDefault()
+              e.preventDefault();
               setModalProduct(true);
+              productDetails(item?.id)
             }}
             className="btn"
           >

@@ -16,14 +16,22 @@ import { ToastContainer } from "react-toastify";
 import { getToken } from "../services/token";
 import CategoryFilter from "../pages/categoryFilter/CategoryFilter";
 import Search from "../pages/searchPage/Search";
-import { getProductData } from "../services/api";
+import { getLikeData, getProductData } from "../services/api";
+import Cart from "../pages/cart/Cart";
 
 function Routerer() {
   const [userModal, setUserModal] = useState(false);
   const [userToken, setUserToken] = useState(getToken());
   const [product, setProduct] = useState([]);
   const [searchFilterData, setSearchFilterData] = useState(product);
+  const [modalProduct, setModalProduct] = useState(false);
+
+  const [likeData, setLikeData] = useState([]);
+
   const [cardLoad, setCardLoad] = useState(false);
+  const [cardLoad2, setCardLoad2] = useState(false);
+  const [cardLoad3, setCardLoad3] = useState(false);
+  const [cardLoad4, setCardLoad4] = useState(false);
 
   const filterData = (text) => {
     const filtered = product.filter((item) =>
@@ -34,9 +42,27 @@ function Routerer() {
 
   useEffect(() => {
     setCardLoad(true);
+    setCardLoad2(true);
+    setCardLoad3(true);
     getProductData()
-      ?.then(setProduct)
-      .finally(() => setCardLoad(false));
+      ?.then((data) => {
+        setProduct(data);
+        setSearchFilterData(data);
+      })
+      .finally(() => {
+        setCardLoad(false);
+        setCardLoad2(false);
+        setCardLoad3(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setCardLoad4(true);
+    getLikeData()
+      .then(setLikeData)
+      .finally(() => {
+        setCardLoad4(false);
+      });
   }, []);
 
   return (
@@ -49,6 +75,7 @@ function Routerer() {
           setUserModal={setUserModal}
           userToken={userToken}
           setUserToken={setUserToken}
+          likeData={likeData}
         />
         <ScrollToTop />
         <Routes>
@@ -58,8 +85,11 @@ function Routerer() {
               <Home
                 product={product}
                 setProduct={setProduct}
+                setLikeData={setLikeData}
                 cardLoad={cardLoad}
                 setCardLoad={setCardLoad}
+                modalProduct={modalProduct}
+                setModalProduct={setModalProduct}
               />
             }
           />
@@ -72,13 +102,42 @@ function Routerer() {
           />
           <Route path="/account" element={<Account />} />
           <Route path="/deteils/:id" element={<Deteils />} />
-          <Route path="/category/:id" element={<CategoryFilter />} />
-          <Route path="/like" element={<Like />} />
+          <Route
+            path="/category/:id"
+            element={
+              <CategoryFilter
+                setProduct={setProduct}
+                setLikeData={setLikeData}
+              />
+            }
+          />
+          <Route
+            path="/like"
+            element={
+              <Like
+                product={product}
+                likeData={likeData}
+                setCardLoad3={setCardLoad3}
+                cardLoad3={cardLoad3}
+                setModalProduct={setModalProduct}
+                setProduct={setProduct}
+                setLikeData={setLikeData}
+                cardLoad4={cardLoad4}
+              />
+            }
+          />
           <Route
             path="/searchs"
-            element={<Search searchFilterData={searchFilterData} />}
-            cardLoad={cardLoad}
+            element={
+              <Search
+                searchFilterData={searchFilterData}
+                cardLoad2={cardLoad2}
+                setProduct={setProduct}
+                setLikeData={setLikeData}
+              />
+            }
           />
+          <Route path="/cart" element={<Cart/>}/>
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

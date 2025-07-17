@@ -8,9 +8,9 @@ import { toast } from "react-toastify";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
-  const [first_name, setFirstName] = useState(null);
-  const [email_or_phone, setEmailOrPhone] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [first_name, setFirstName] = useState("");
+  const [email_or_phone, setEmailOrPhone] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 

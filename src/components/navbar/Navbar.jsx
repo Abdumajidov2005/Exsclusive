@@ -14,6 +14,7 @@ function Navbar({
   userToken,
   setUserToken,
   filterData,
+  likeData,
 }) {
   const navigate = useNavigate();
   return (
@@ -56,24 +57,27 @@ function Navbar({
             <div className="icons">
               <div className="search">
                 <input
+                  id="lusearch"
+                  onFocus={() => {
+                    navigate("/searchs");
+                  }}
                   onInput={(e) => {
                     filterData(e.target.value);
-                    navigate("/searchs");
                   }}
                   type="text"
                   placeholder="What are you looking for?"
                 />
-                <h5>
+                <label htmlFor="lusearch">
                   <LuSearch />
-                </h5>
+                </label>
               </div>
               <Link to={"/like"}>
                 <FaRegHeart />
-                <span></span>
+                {likeData?.length > 0 && <span>{likeData?.length}</span>}
               </Link>
-              <p>
+              <Link to={"/cart"}>
                 <RiShoppingCart2Line />
-              </p>
+              </Link>
               {userToken ? (
                 <p
                   className="users"
@@ -126,6 +130,7 @@ function Navbar({
               setUserToken(null);
               localStorage.clear();
               setUserModal(false);
+              navigate("/");
             }}
           >
             <TbLogout2 /> Logout

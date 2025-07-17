@@ -1,5 +1,5 @@
 .section-detailas {
-  padding: 70px 0px;
+  padding: 30px 0px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -81,7 +81,7 @@
 
 .responces-imageses-mains {
   width: 500px;
-  height: 600px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,14 +175,28 @@
   gap: 10px;
 }
 
-.colors p:nth-child(2) span {
+.colors p:nth-child(2) .color-select {
   display: inline-block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: red;
+  padding: 5px 15px;
+  border-radius: 4px;
   cursor: pointer;
+  border: 1px solid #000000;
+  transition: all .3s ease;
 }
+
+.colors p:nth-child(2) .color-select.tanlash{
+  background-color: #db4444;
+  color: #f5f5f5;
+  border-color: #db4444;
+}
+
+.colors p:nth-child(2) .color-select:hover{
+  background-color: #db4444;
+  color: #f5f5f5;
+  border-color: #db4444 ;
+}
+
+
 
 .sizes {
   display: flex;
@@ -202,8 +216,8 @@
   gap: 10px;
 }
 
-.kattalik p {
-  width: 32px;
+.kattalik .sizeeffect {
+  width: 50px;
   height: 32px;
   border: 1px solid #00000080;
   display: flex;
@@ -217,7 +231,13 @@
   cursor: pointer;
 }
 
-.kattalik p:hover {
+.sizeeffect.designation{
+  background-color: #db4444;
+  color: #f5f5f5;
+  border-color: #db4444;
+}
+
+.kattalik .sizeeffect:hover {
   background-color: #db4444;
   border-color: #db4444;
   color: white;

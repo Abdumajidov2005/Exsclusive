@@ -1,0 +1,133 @@
+.likecard {
+  width: 270px;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+
+
+.likecard:hover{
+    box-shadow: 0px 0px 10px 3px rgba(128, 128, 128, 0.311);
+    backdrop-filter: blur(4px);
+}
+
+.like-img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  margin-bottom: 13px;
+  position: relative;
+  overflow: hidden;
+}
+.like-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.like-persent{
+    position: absolute;
+    top: 10px;
+    left: -100px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 14px;
+    background-color: #DB4444;
+    box-shadow: 0px 0px 10px 3px #db444428;
+    color: #f5f5f5;
+    transition: all .3s ease;
+    transform: translateY(-30px);
+}
+
+.likecard:hover .like-persent{
+    left: 10px;
+    transform: translateY(0px);
+}
+
+
+.like-trash{
+    position: absolute;
+    top: 10px;
+    right: -100px;
+    color: #000000;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #FFFFFF;
+    transform: translateY(-30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: 0px 0px 10px 3px rgba(128, 128, 128, 0.199);
+}
+
+
+.likecard:hover .like-trash{
+    right: 10px;
+    transform: translateY(0px) rotate(360deg);
+}
+
+.like-btn{
+    position: absolute;
+    bottom: -100px;
+    background-color: #000000;
+    width: 100%;
+    color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    border-radius: 0px 0px 4px 4px;
+    transition: all .3s ease;
+    transform: scale(0);
+}
+
+.likecard:hover .like-btn{
+    bottom: 0px;
+    transform: scale(1);
+}
+
+
+.like-info{
+    padding-left: 5px;
+}
+
+.like-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.like-info p {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 5px;
+}
+
+.like-info p span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.like-info p span:nth-child(1){
+    color: #DB4444;
+}
+
+.like-info p span:nth-child(2){
+    color: #0000004a;
+}
+

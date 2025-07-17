@@ -2,6 +2,23 @@
     margin-top: 30px;
 }
 
+
+.topilmadi{
+  width: 100%;
+  text-align: center;
+}
+
+.search-gif{
+  width: 100%;
+  height: 450px;
+}
+
+.search-gif img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .card-loaderss-mark {
   width: 100%;
   display: flex;
@@ -69,7 +86,7 @@
     gray
   );
   background-size: 500%;
-  animation: loaderpath2 30s linear infinite;
+  animation: loaderpath2 10s linear infinite;
 }
 
 .card-loaderss-patch span:nth-child(4) {
