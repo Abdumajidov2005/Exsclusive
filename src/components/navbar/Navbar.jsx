@@ -7,6 +7,8 @@ import { FiUser } from "react-icons/fi";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { IoIosStarOutline } from "react-icons/io";
 import { TbLogout2 } from "react-icons/tb";
+import { getToken } from "../../services/token";
+import Logo from "../logo/Logo";
 
 function Navbar({
   userModal,
@@ -15,8 +17,10 @@ function Navbar({
   setUserToken,
   filterData,
   likeData,
+  cartData,
 }) {
   const navigate = useNavigate();
+
   return (
     <>
       <nav>
@@ -38,7 +42,9 @@ function Navbar({
         <div className="nav-bottom">
           <div className="container">
             <div className="logo">
-              <Link to="/">Exclusive</Link>
+              <Link to="/">
+                <Logo />
+              </Link>
             </div>
             <ul className="links">
               <li>
@@ -73,10 +79,16 @@ function Navbar({
               </div>
               <Link to={"/like"}>
                 <FaRegHeart />
-                {likeData?.length > 0 && <span>{likeData?.length}</span>}
+                {getToken()
+                  ? likeData?.length > 0 && <span>{likeData?.length}</span>
+                  : ""}
               </Link>
               <Link to={"/cart"}>
                 <RiShoppingCart2Line />
+             
+                {getToken()
+                  ? cartData?.cart_items?.length > 0 && <span>{cartData?.cart_items?.length}</span>
+                  : ""}
               </Link>
               {userToken ? (
                 <p

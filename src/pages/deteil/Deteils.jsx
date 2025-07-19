@@ -4,13 +4,15 @@ import { TiStarFullOutline } from "react-icons/ti";
 import { FiHeart } from "react-icons/fi";
 import { FaTruckFast } from "react-icons/fa6";
 import { LuRefreshCcw } from "react-icons/lu";
-import { useParams } from "react-router-dom";
-import { productDetails } from "../../services/api";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { addToCart, productDetails } from "../../services/api";
 import { baseUrl } from "../../services/config";
 import { toast } from "react-toastify";
+import { getToken } from "../../services/token";
 
-function Deteils() {
+function Deteils({setCartData}) {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [oneProductData, setProductData] = useState(null);
   const [mainImg, setMainImg] = useState("");
   const [readMore, setReadMore] = useState(false);
@@ -18,40 +20,76 @@ function Deteils() {
   const [sizeAdd, setSizeAdd] = useState(null);
   const [colorAdd, setColorAdd] = useState(null);
 
+  const [detailsLoder, setDetailsLoader] = useState(false);
+
   useEffect(() => {
-    productDetails(id)?.then((data) => {
-      setProductData(data);
-      setMainImg(data?.pictures[0]?.file);
-    });
+    if (!id) return;
+    setDetailsLoader(true);
+    productDetails(id)
+      .then((data) => {
+        if (data) {
+          setProductData(data);
+
+          if (data?.pictures?.length > 0) {
+            setMainImg(data.pictures[0].file);
+          }
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching product details:", err);
+      })
+      .finally(() => {
+        setDetailsLoader(false);
+      });
   }, [id]);
+
+  // if (!oneProductData) {
+  //   return <p>Loading product details...</p>;
+  // }
 
   return (
     <>
       <div className="product-details">
         <div className="container">
           <div className="section-detailas">
-            <p>Account</p>/<p>{oneProductData?.category?.title}</p>/
-            <p>{oneProductData?.title}</p>
+            <p>Account</p>/
+            <Link to={`/category/${oneProductData?.category?.id}`}>
+              {oneProductData?.category?.title}
+            </Link>
+            /<p>{oneProductData?.title}</p>
           </div>
           <div className="responces">
             <div className="responces-imageses">
               <div className="responces-imageses-types">
-                {oneProductData?.pictures?.map((item, index) => {
-                  return (
-                    <div
-                      key={index}
-                      onClick={() => {
-                        setMainImg(item?.file);
-                      }}
-                      className="types-selections"
-                    >
-                      <img src={`${baseUrl}${item?.file}`} alt="" />
-                    </div>
-                  );
-                })}
+                {detailsLoder ? (
+                  <div className="load-cards-typ">
+                    <div className="type-loads"></div>
+                    <div className="type-loads"></div>
+                    <div className="type-loads"></div>
+                    <div className="type-loads"></div>
+                  </div>
+                ) : (
+                  oneProductData?.pictures?.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => {
+                          setMainImg(item?.file);
+                        }}
+                        className="types-selections"
+                      >
+                        <img src={`${baseUrl}${item?.file}`} alt="" />
+                      </div>
+                    );
+                  })
+                )}
               </div>
               <div className="responces-imageses-mains">
-                {mainImg && <img src={`${baseUrl}${mainImg}`} alt="" />}
+                {detailsLoder ? (
+                  <div className="loader-mains"></div>
+                ) : (
+                  mainImg && <img src={`${baseUrl}${mainImg}`} alt="" />
+                )}
               </div>
             </div>
             <div className="recponces-remember">
@@ -106,36 +144,39 @@ function Deteils() {
                           setColorAdd(item);
                         }}
                         key={index}
+                        style={{ background: item }}
                         className={`color-select ${
-                          colorAdd == item ? "tanlash" : ""
+                          colorAdd === item ? "tanlash" : ""
                         }`}
-                      >
-                        {item}
-                      </span>
+                      ></span>
                     );
                   })}
                 </p>
               </div>
-              <div className="sizes">
-                <h3>Size:</h3>
-                <div className="kattalik">
-                  {oneProductData?.properties?.size?.map((item, index) => {
-                    return (
-                      <p
-                        onClick={() => {
-                          setSizeAdd(item);
-                        }}
-                        className={`sizeeffect ${
-                          sizeAdd === item ? "designation" : ""
-                        }`}
-                        key={index}
-                      >
-                        {item}
-                      </p>
-                    );
-                  })}
+              {oneProductData?.properties?.size ? (
+                <div className="sizes">
+                  <h3>Size:</h3>
+                  <div className="kattalik">
+                    {oneProductData?.properties?.size?.map((item, index) => {
+                      return (
+                        <p
+                          onClick={() => {
+                            setSizeAdd(item);
+                          }}
+                          className={`sizeeffect ${
+                            sizeAdd === item ? "designation" : ""
+                          }`}
+                          key={index}
+                        >
+                          {item}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
               <div className="recponce-buying">
                 <div className="counter">
                   <span
@@ -143,8 +184,7 @@ function Deteils() {
                       if (count > 1) {
                         setCount(count - 1);
                       } else {
-                        count == 1;
-                        toast.warning("Maxsulot qo'shing");
+                        toast.warning("Eng kamida 1 ta maxsulot tanlang");
                       }
                     }}
                   >
@@ -159,10 +199,29 @@ function Deteils() {
                     +
                   </span>
                 </div>
-                <button>Buy Now</button>
-                <div className="heart">
-                  <FiHeart />
-                </div>
+
+                <button
+                  onClick={() => {
+                    if (getToken()) {
+                      const hasSizeOption = oneProductData?.sizes?.length > 0;
+
+                      if (!colorAdd || (hasSizeOption && !sizeAdd)) {
+                        toast.warning(
+                          "Iltimos, rang" +
+                            (hasSizeOption ? " va o'lchamni " : "") +
+                            " tanlang!"
+                        );
+                        return;
+                      }
+
+                      addToCart(oneProductData?.id, count, colorAdd, sizeAdd, setCartData);
+                    } else {
+                      navigate("/signup");
+                    }
+                  }}
+                >
+                  Buy Now
+                </button>
               </div>
               <div className="recponce-deliverys">
                 <div className="recponce-delivery">

@@ -3,10 +3,20 @@ import "./Card.css";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { baseUrl } from "../../services/config";
-import { Link } from "react-router-dom";
-import { deleteLike, oneLikeData, productDetails } from "../../services/api";
+import { Link, useNavigate } from "react-router-dom";
+import { deleteLike, oneLikeData } from "../../services/api";
+import { getToken } from "../../services/token";
 
-function Card({ item, setModalProduct, setProduct, setLikeData }) {
+function Card({
+  item,
+  setModalProduct,
+  setProduct,
+  setLikeData,
+  setShopModalId,
+  setSearchFilterData
+}) {
+  const navigate = useNavigate();
+
   return (
     <>
       <Link to={`/deteils/${item?.id}`} key={item?.id} className="card">
@@ -27,14 +37,16 @@ function Card({ item, setModalProduct, setProduct, setLikeData }) {
               {item?.is_liked ? (
                 <FaHeart
                   onClick={() => {
-                    deleteLike(item?.id, setProduct, setLikeData);
+                    deleteLike(item?.id, setProduct, setLikeData, setSearchFilterData);
                   }}
                   style={{ color: "red" }}
                 />
               ) : (
                 <FaRegHeart
                   onClick={() => {
-                    oneLikeData(item?.id, setProduct, setLikeData);
+                    getToken()
+                      ? oneLikeData(item?.id, setProduct, setLikeData, setSearchFilterData)
+                      : navigate("/signup");
                   }}
                 />
               )}
@@ -48,8 +60,10 @@ function Card({ item, setModalProduct, setProduct, setLikeData }) {
           <div
             onClick={(e) => {
               e.preventDefault();
-              setModalProduct(true);
-              productDetails(item?.id)
+              getToken() ?  setModalProduct(true) : navigate("/signup")
+              setShopModalId(item?.id);
+              console.log(item.id);
+              
             }}
             className="btn"
           >

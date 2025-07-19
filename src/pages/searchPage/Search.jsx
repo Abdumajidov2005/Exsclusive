@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Search.css";
 import Card from "../../components/card/Card";
+import ShopModal from "../../components/shopModal/ShopModal";
 
-function Search({ searchFilterData, cardLoad2, setLikeData, setProduct }) {
+function Search({
+  searchFilterData,
+  cardLoad2,
+  setLikeData,
+  setProduct,
+  setSearchFilterData,
+  setShopModalId,
+  shopModalId
+}) {
   const [modalProduct, setModalProduct] = useState(false);
 
   return (
@@ -61,6 +70,8 @@ function Search({ searchFilterData, cardLoad2, setLikeData, setProduct }) {
                     setModalProduct={setModalProduct}
                     setProduct={setProduct}
                     setLikeData={setLikeData}
+                    setSearchFilterData={setSearchFilterData}
+                    setShopModalId={setShopModalId}
                   />
                 );
               })
@@ -71,14 +82,12 @@ function Search({ searchFilterData, cardLoad2, setLikeData, setProduct }) {
       <div className={`modal-oyna ${modalProduct ? "tojoin" : ""}`}>
         <div onClick={() => setModalProduct(false)} className="modal-close-bg">
           <div onClick={(e) => e.stopPropagation()}>
-            <p
-              onClick={() => {
-                setModalProduct(false);
-              }}
-            >
-              exit
-            </p>
-            <p>Modal oyna ichida ShopModal yoki boshqa komponent</p>
+            {shopModalId && (
+              <ShopModal
+                shopModalId={shopModalId}
+                setModalProduct={setModalProduct}
+              />
+            )}
           </div>
         </div>
       </div>

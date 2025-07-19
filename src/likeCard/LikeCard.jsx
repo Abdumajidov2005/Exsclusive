@@ -5,7 +5,7 @@ import { baseUrl } from "../services/config";
 import { BsTrash } from "react-icons/bs";
 import { deleteLike } from "../services/api";
 
-function LikeCard({ item, setModalProduct, setLikeData, setProduct }) {
+function LikeCard({ item, setModalProduct, setLikeData, setProduct, setShopModalId }) {
   return (
     <>
       <Link to={`/deteils/${item?.id}`} className="likecard">
@@ -27,6 +27,7 @@ function LikeCard({ item, setModalProduct, setLikeData, setProduct }) {
             onClick={(e) => {
               e.preventDefault();
               setModalProduct(true);
+              setShopModalId(item?.id);
             }}
             className="like-btn"
           >
@@ -42,8 +43,8 @@ function LikeCard({ item, setModalProduct, setLikeData, setProduct }) {
               : item?.title.slice(0, 26) + "..."}
           </h4>
           <p>
-            <span>$960</span>
-            <span>$1160</span>
+            <span>${item?.discount_price}</span>
+            <span style={{textDecoration:"line-through"}}>${item?.price}</span>
           </p>
         </div>
       </Link>

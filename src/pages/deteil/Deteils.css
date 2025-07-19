@@ -11,6 +11,11 @@
   color: #000000;
 }
 
+.section-detailas a {
+  text-decoration: none;
+  color: #8f8f8f;
+}
+
 .responces {
   width: 100%;
   display: flex;
@@ -37,8 +42,8 @@
 }
 
 .types-selections {
-  width: 170px;
-  height: 138px;
+  width: 130px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,31 +177,28 @@
 .colors p:nth-child(2) {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .colors p:nth-child(2) .color-select {
   display: inline-block;
-  padding: 5px 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 4px;
   cursor: pointer;
   border: 1px solid #000000;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
-.colors p:nth-child(2) .color-select.tanlash{
-  background-color: #db4444;
-  color: #f5f5f5;
-  border-color: #db4444;
+.colors p:nth-child(2) .color-select.tanlash {
+  box-shadow: 0px 0px 5px 2px rgb(177, 177, 177);
+  border-radius: 50%;
 }
 
-.colors p:nth-child(2) .color-select:hover{
-  background-color: #db4444;
-  color: #f5f5f5;
-  border-color: #db4444 ;
+.colors p:nth-child(2) .color-select:hover {
+  /* box-shadow: 0px 0px 5px 2px rgb(177, 177, 177); */
+  transform: scale(1.1);
 }
-
-
 
 .sizes {
   display: flex;
@@ -231,7 +233,7 @@
   cursor: pointer;
 }
 
-.sizeeffect.designation{
+.sizeeffect.designation {
   background-color: #db4444;
   color: #f5f5f5;
   border-color: #db4444;
@@ -246,7 +248,8 @@
 .recponce-buying {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
+  gap: 20px;
   padding: 24px 0px;
 }
 
@@ -295,13 +298,33 @@
 
 .recponce-buying button {
   padding: 10px 48px;
-  background-color: #db4444;
-  border-radius: 4px;
-  color: #fafafa;
+  border-radius: 5px;
   border: none;
+  color: #f5f5f5;
   font-size: 16px;
-  cursor: pointer;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: linear-gradient(to top left, #db4444, #e85a5a);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 -2px 4px rgba(111, 109, 109, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+.recponce-buying button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+    inset 0 -3px 6px rgba(119, 119, 119, 0.3);
+  transform: scale(1.03);
+}
+
+.recponce-buying button:active {
+  transform: scale(1);
 }
 
 .recponce-buying .heart {
@@ -350,4 +373,62 @@
 
 .recponce-delivery .icons {
   font-size: 30px;
+}
+
+/* loaderlar uchun */
+
+.load-cards-typ {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.load-cards-typ .type-loads {
+  width: 130px;
+  height: 118px;
+  border: 1px solid #f5f5f5;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  animation: change ease-in-out 5s infinite;
+  background: linear-gradient(90deg, #b1b1b1 0%, #a1a1a1 50%, #b1b1b1 100%);
+  background-size: 500%;
+  animation: identifierLoad 4s ease-in both infinite;
+}
+
+@keyframes identifierLoad {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 300%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+.responces-imageses-mains {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  animation: change ease-in-out 5s infinite;
+  overflow: hidden;
+}
+
+.loader-mains {
+  width: 500px;
+  height: 500px;
+  border-radius: 61% 39% 60% 40% / 27% 65% 35% 73%;
+  animation: change ease-in-out 5s infinite;
+  overflow: hidden;
+  background: linear-gradient(90deg, #b1b1b1 0%, #a1a1a1 50%, #b1b1b1 100%);
+  background-size: 500%;
+  animation: identifierLoad 4s ease-in both infinite;
 }

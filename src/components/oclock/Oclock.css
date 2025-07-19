@@ -1,0 +1,25 @@
+.three-sales-oclock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.three-sales-oclock h2 {
+  display: flex;
+  flex-direction: column;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 30px;
+}
+
+.three-sales-oclock h2 span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.three-sales-oclock .double-dot {
+  margin-top: 20px;
+  font-size: 32px;
+  color: #e07575;
+}

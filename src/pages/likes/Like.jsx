@@ -12,9 +12,12 @@ function Like({
   setLikeData,
   setProduct,
   cardLoad4,
+  shopModalId,
+  modalProduct,
+  setModalProduct,
+  setShopModalId
 }) {
   const [moreiInfo4, setMoreInfo4] = useState(false);
-  const [modalProduct, setModalProduct] = useState(false);
 
   return (
     <>
@@ -56,22 +59,30 @@ function Like({
               ) : likeData?.length === 0 ? (
                 <div className="tugadi">
                   <div className="like-gif">
-                     <img src="/imgs/like.gif" alt="" />
+                    <img src="/imgs/like.gif" alt="" />
                   </div>
-                 <div className="like-infogif">
-                  <p> Sevimli mahsulotlar yo'q</p>
-                  <p> Mahsulotdagi <span><GoHeartFill /></span> belgisi bilan qo'shing️</p>
-                 </div>
+                  <div className="like-infogif">
+                    <p> Sevimli mahsulotlar yo'q</p>
+                    <p>
+                      {" "}
+                      Mahsulotdagi{" "}
+                      <span>
+                        <GoHeartFill />
+                      </span>{" "}
+                      belgisi bilan qo'shing️
+                    </p>
+                  </div>
                 </div>
               ) : (
                 likeData?.map((item) => {
                   return (
                     <LikeCard
+                      key={item?.id}
+                      item={item}
                       setLikeData={setLikeData}
                       setProduct={setProduct}
                       setModalProduct={setModalProduct}
-                      key={item?.id}
-                      item={item}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
@@ -112,6 +123,7 @@ function Like({
                     setLikeData={setLikeData}
                     setProduct={setProduct}
                     setModalProduct={setModalProduct}
+                    setShopModalId={setShopModalId}
                   />
                 );
               })
@@ -152,9 +164,10 @@ function Like({
                   <Card
                     key={item.id}
                     item={item}
-                    setModalProduct={setModalProduct}
                     setLikeData={setLikeData}
                     setProduct={setProduct}
+                    setModalProduct={setModalProduct}
+                    setShopModalId={setShopModalId}
                   />
                 );
               })
@@ -165,15 +178,12 @@ function Like({
       <div className={`modal-oyna ${modalProduct ? "tojoin" : ""}`}>
         <div onClick={() => setModalProduct(false)} className="modal-close-bg">
           <div onClick={(e) => e.stopPropagation()}>
-            <p
-              onClick={() => {
-                setModalProduct(false);
-              }}
-            >
-              exit
-            </p>
-            <p>Modal oyna ichida ShopModal yoki boshqa komponent</p>
-            <ShopModal />
+            {shopModalId && (
+              <ShopModal
+                shopModalId={shopModalId}
+                setModalProduct={setModalProduct}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
+
+.logo-container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  font-family: 'Lato', sans-serif;
+}
+
+.text-stroke {
+  font-size: 92px;
+  letter-spacing: 4px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: textStrokeAnim 4000ms linear both infinite;
+}
+
+.reset {
+  margin-top: 1rem;
+  padding: 0.5em 1.25em;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: hsl(49deg, 100%, 62%);
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset:hover {
+  background-color: hsl(49deg, 100%, 50%);
+}
+
+@keyframes textStrokeAnim {
+  0% {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    fill: #0000;
+  }
+  95% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 90%;
+    fill: #0000;
+  }
+  100% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 0%;
+    fill: #9b9dad;
+    filter: drop-shadow(2px 2px 10px #0007);
+  }
+}

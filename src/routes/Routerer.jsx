@@ -16,22 +16,25 @@ import { ToastContainer } from "react-toastify";
 import { getToken } from "../services/token";
 import CategoryFilter from "../pages/categoryFilter/CategoryFilter";
 import Search from "../pages/searchPage/Search";
-import { getLikeData, getProductData } from "../services/api";
+import { getCartData, getLikeData, getProductData } from "../services/api";
 import Cart from "../pages/cart/Cart";
 
 function Routerer() {
   const [userModal, setUserModal] = useState(false);
   const [userToken, setUserToken] = useState(getToken());
   const [product, setProduct] = useState([]);
-  const [searchFilterData, setSearchFilterData] = useState(product);
+  const [searchFilterData, setSearchFilterData] = useState([]);
   const [modalProduct, setModalProduct] = useState(false);
 
   const [likeData, setLikeData] = useState([]);
+  const [cartData, setCartData] = useState([]);
 
   const [cardLoad, setCardLoad] = useState(false);
   const [cardLoad2, setCardLoad2] = useState(false);
   const [cardLoad3, setCardLoad3] = useState(false);
   const [cardLoad4, setCardLoad4] = useState(false);
+
+  const [shopModalId, setShopModalId] = useState(null);
 
   const filterData = (text) => {
     const filtered = product.filter((item) =>
@@ -63,12 +66,15 @@ function Routerer() {
       .finally(() => {
         setCardLoad4(false);
       });
+    getCartData().then((data) => {
+      setCartData(data);
+    });
   }, []);
 
   return (
     <>
       <BrowserRouter>
-        <ToastContainer />
+        <ToastContainer autoClose={800} />
         <Navbar
           filterData={filterData}
           userModal={userModal}
@@ -76,6 +82,8 @@ function Routerer() {
           userToken={userToken}
           setUserToken={setUserToken}
           likeData={likeData}
+          cartData={cartData}
+          setCartData={setCartData}
         />
         <ScrollToTop />
         <Routes>
@@ -90,6 +98,9 @@ function Routerer() {
                 setCardLoad={setCardLoad}
                 modalProduct={modalProduct}
                 setModalProduct={setModalProduct}
+                setShopModalId={setShopModalId}
+                shopModalId={shopModalId}
+                setCartData={setCartData}
               />
             }
           />
@@ -101,13 +112,20 @@ function Routerer() {
             element={<Login setUserToken={setUserToken} />}
           />
           <Route path="/account" element={<Account />} />
-          <Route path="/deteils/:id" element={<Deteils />} />
+          <Route
+            path="/deteils/:id"
+            element={<Deteils setCartData={setCartData} />}
+          />
           <Route
             path="/category/:id"
             element={
               <CategoryFilter
                 setProduct={setProduct}
                 setLikeData={setLikeData}
+                shopModalId={shopModalId}
+                modalProduct={modalProduct}
+                setShopModalId={setShopModalId}
+                setModalProduct={setModalProduct}
               />
             }
           />
@@ -119,10 +137,13 @@ function Routerer() {
                 likeData={likeData}
                 setCardLoad3={setCardLoad3}
                 cardLoad3={cardLoad3}
-                setModalProduct={setModalProduct}
                 setProduct={setProduct}
                 setLikeData={setLikeData}
                 cardLoad4={cardLoad4}
+                modalProduct={modalProduct}
+                setModalProduct={setModalProduct}
+                shopModalId={shopModalId}
+                setShopModalId={setShopModalId}
               />
             }
           />
@@ -134,10 +155,21 @@ function Routerer() {
                 cardLoad2={cardLoad2}
                 setProduct={setProduct}
                 setLikeData={setLikeData}
+                setSearchFilterData={setSearchFilterData}
+                shopModalId={shopModalId}
+                setShopModalId={setShopModalId}
               />
             }
           />
-          <Route path="/cart" element={<Cart/>}/>
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cartData={cartData}
+                setCartData={setCartData}
+              />
+            }
+          />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

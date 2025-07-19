@@ -10,6 +10,7 @@ import Hero from "../../components/hero/Hero";
 import Card from "../../components/card/Card";
 import ShopModal from "../../components/shopModal/ShopModal";
 import { Link } from "react-router-dom";
+import Oclock from "../../components/oclock/Oclock";
 
 function Home({
   setProduct,
@@ -18,7 +19,10 @@ function Home({
   setCardLoad,
   modalProduct,
   setModalProduct,
-  setLikeData
+  setLikeData,
+  setShopModalId,
+  shopModalId,
+  setCartData,
 }) {
   const [category, setCategory] = useState([]);
   const [categoryLoading, setCategoryLoading] = useState(false);
@@ -50,7 +54,13 @@ function Home({
       <Hero category={category} categoryLoading={categoryLoading} />
       <main>
         <div className={`modal-oyna ${modalProduct ? "tojoin" : ""}`}>
-          <ShopModal setModalProduct={setModalProduct} />
+          {shopModalId && (
+            <ShopModal
+              setCartData={setCartData}
+              shopModalId={shopModalId}
+              setModalProduct={setModalProduct}
+            />
+          )}
         </div>
         <section className="main-products">
           <div className="container">
@@ -62,7 +72,7 @@ function Home({
                 <div className="three-sales-titles">
                   <h4>Flash Sales</h4>
                   <div className="three-sales-oclock">
-                    <h2>
+                    {/* <h2>
                       <span>Days</span>
                       03
                     </h2>
@@ -80,18 +90,19 @@ function Home({
                     <h2>
                       <span>Seconds</span>
                       03
-                    </h2>
+                    </h2> */}
+                    <Oclock />
                   </div>
                 </div>
 
-                <div className="three-sales-lines">
+                {/* <div className="three-sales-lines">
                   <p>
                     <FaArrowLeft />
                   </p>
                   <p>
                     <FaArrowRight />
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="cards">
@@ -99,11 +110,12 @@ function Home({
                 product?.slice(0).map((item) => {
                   return (
                     <Card
-                      key={item.id}
+                      key={item?.id}
                       item={item}
-                      setProduct={setProduct}
                       setModalProduct={setModalProduct}
+                      setProduct={setProduct}
                       setLikeData={setLikeData}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
@@ -142,11 +154,12 @@ function Home({
                 product?.slice(0, 4).map((item) => {
                   return (
                     <Card
-                      key={item.id}
+                      key={item?.id}
                       item={item}
                       setProduct={setProduct}
                       setModalProduct={setModalProduct}
                       setLikeData={setLikeData}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
@@ -184,14 +197,14 @@ function Home({
                   <h4>Browse By Category</h4>
                 </div>
 
-                <div className="three-sales-lines">
+                {/* <div className="three-sales-lines">
                   <p>
                     <FaArrowLeft />
                   </p>
                   <p>
                     <FaArrowRight />
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="categorys">
@@ -267,11 +280,12 @@ function Home({
                 product?.slice(0).map((item) => {
                   return (
                     <Card
-                      key={item.id}
+                      key={item?.id}
                       item={item}
                       setProduct={setProduct}
                       setModalProduct={setModalProduct}
                       setLikeData={setLikeData}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
@@ -310,11 +324,12 @@ function Home({
                 product?.slice(0, 4).map((item) => {
                   return (
                     <Card
-                      key={item.id}
+                      key={item?.id}
                       item={item}
                       setProduct={setProduct}
                       setModalProduct={setModalProduct}
                       setLikeData={setLikeData}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
@@ -334,14 +349,14 @@ function Home({
                   <h4>Explore Our Products</h4>
                 </div>
 
-                <div className="three-sales-lines">
+                {/* <div className="three-sales-lines">
                   <p>
                     <FaArrowLeft />
                   </p>
                   <p>
                     <FaArrowRight />
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="cards">
@@ -349,11 +364,12 @@ function Home({
                 product?.slice(0).map((item) => {
                   return (
                     <Card
-                      key={item.id}
+                      key={item?.id}
                       item={item}
                       setProduct={setProduct}
                       setModalProduct={setModalProduct}
                       setLikeData={setLikeData}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
@@ -420,11 +436,12 @@ function Home({
                 product?.slice(0, 8).map((item) => {
                   return (
                     <Card
-                      key={item.id}
+                      key={item?.id}
                       item={item}
                       setProduct={setProduct}
                       setModalProduct={setModalProduct}
                       setLikeData={setLikeData}
+                      setShopModalId={setShopModalId}
                     />
                   );
                 })
