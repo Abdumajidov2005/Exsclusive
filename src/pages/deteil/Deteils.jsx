@@ -111,10 +111,10 @@ function Deteils({setCartData}) {
               <p className="decription">
                 {readMore
                   ? oneProductData?.description
-                  : oneProductData?.description.length < 100
+                  : oneProductData?.description?.length < 100
                   ? oneProductData?.description
-                  : oneProductData?.description.slice(0, 250) + "...."}
-                {oneProductData?.description.length < 100 ? (
+                  : oneProductData?.description?.slice(0, 250) + "...."}
+                {oneProductData?.description?.length < 100 ? (
                   ""
                 ) : readMore ? (
                   <span
@@ -213,7 +213,9 @@ function Deteils({setCartData}) {
                         );
                         return;
                       }
-
+                       setColorAdd(null)
+                       setSizeAdd(null)
+                       setCount(1)
                       addToCart(oneProductData?.id, count, colorAdd, sizeAdd, setCartData);
                     } else {
                       navigate("/signup");

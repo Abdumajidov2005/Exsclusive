@@ -1,7 +1,9 @@
 import { toast } from "react-toastify";
 import { baseUrl } from "./config";
 import { getToken } from "./token";
-import { renderToReadableStream } from "react-dom/server";
+
+
+
 
 export const getProductData = () => {
   const myHeaders = new Headers();
@@ -221,7 +223,15 @@ export const getCartData = (setCartData) => {
     });
 };
 
-export const addToCart = (id, quantity, color, size, setCartData) => {
+export const addToCart = (
+  id,
+  quantity,
+  color,
+  size,
+  setCartData,
+  setProduct,
+  setSearchFilterData
+) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", `Bearer ${getToken()}`);
@@ -237,7 +247,6 @@ export const addToCart = (id, quantity, color, size, setCartData) => {
     properties: properties,
   });
 
-
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
@@ -249,12 +258,19 @@ export const addToCart = (id, quantity, color, size, setCartData) => {
     .then((response) => response.text())
     .then((result) => {
       toast.success("maxsulot qo'shildi");
-      if (typeof setCartData === "function") {
-        getCartData().then((data) => {
+      getCartData().then((data) => {
+        if (typeof setCartData === "function") {
           setCartData(data);
-        });
-      }
-
+        }
+      });
+      getProductData().then((datas) => {
+        if (typeof setProduct === "function") {
+          setProduct(datas);
+        }
+        if (typeof setSearchFilterData === "function") {
+          setSearchFilterData(datas);
+        }
+      });
       return result;
     })
     .catch((error) => {
@@ -277,19 +293,25 @@ export const delCartData = (id, setCartData) => {
     `${baseUrl}/order/remove-from-cart?cart_item_id=${id}`,
     requestOptions
   )
-    .then((response) => response.text())
-    .then((result) => {
-      toast.error("Maxsulot o'chirildi");
-      if (typeof setCartData === "function") {
-        getCartData().then((data) => {
-          setCartData(data);
-        });
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("O‘chirishda xatolik yuz berdi");
       }
-
-      return result;
+      return response.text(); // yoki .json() agar API json qaytarsa
+    })
+    .then(() => {
+      toast.error("Maxsulot o'chirildi");
+      return getCartData(); // Bu endi return bo‘ladi!
+    })
+    .then((updatedData) => {
+      if (typeof setCartData === "function") {
+        setCartData(updatedData);
+      }
+      return updatedData; // bu muhim!
     })
     .catch((error) => {
       console.error(error);
-      return [];
+      toast.error("O‘chirishda xatolik yuz berdi");
+      return null;
     });
 };

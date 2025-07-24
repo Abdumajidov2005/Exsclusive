@@ -10,7 +10,8 @@ function Search({
   setProduct,
   setSearchFilterData,
   setShopModalId,
-  shopModalId
+  shopModalId,
+  setCartData,
 }) {
   const [modalProduct, setModalProduct] = useState(false);
 
@@ -86,6 +87,9 @@ function Search({
               <ShopModal
                 shopModalId={shopModalId}
                 setModalProduct={setModalProduct}
+                setProduct={setProduct}
+                setCartData={setCartData}
+                setSearchFilterData={setSearchFilterData}
               />
             )}
           </div>

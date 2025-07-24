@@ -18,6 +18,7 @@ import CategoryFilter from "../pages/categoryFilter/CategoryFilter";
 import Search from "../pages/searchPage/Search";
 import { getCartData, getLikeData, getProductData } from "../services/api";
 import Cart from "../pages/cart/Cart";
+import CheckOut from "../pages/checkout/CheckOut";
 
 function Routerer() {
   const [userModal, setUserModal] = useState(false);
@@ -126,6 +127,7 @@ function Routerer() {
                 modalProduct={modalProduct}
                 setShopModalId={setShopModalId}
                 setModalProduct={setModalProduct}
+                setCartData={setCartData}
               />
             }
           />
@@ -163,13 +165,9 @@ function Routerer() {
           />
           <Route
             path="/cart"
-            element={
-              <Cart
-                cartData={cartData}
-                setCartData={setCartData}
-              />
-            }
+            element={<Cart cartData={cartData} setCartData={setCartData} />}
           />
+          <Route path="/checkout" element={<CheckOut cartData={cartData} />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

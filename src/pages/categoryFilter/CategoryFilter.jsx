@@ -12,6 +12,7 @@ function CategoryFilter({
   modalProduct,
   setModalProduct,
   setShopModalId,
+  setCartData
 }) {
   const { id } = useParams();
   const [filterId, setFilterId] = useState(null);
@@ -94,6 +95,7 @@ function CategoryFilter({
                   <ShopModal
                     shopModalId={shopModalId}
                     setModalProduct={setModalProduct}
+                    setCartData={setCartData}
                   />
                 )}
               </div>

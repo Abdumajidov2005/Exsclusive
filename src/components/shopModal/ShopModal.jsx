@@ -7,7 +7,13 @@ import { baseUrl } from "../../services/config";
 import { toast } from "react-toastify";
 import { getToken } from "../../services/token";
 
-function ShopModal({ setModalProduct, shopModalId , setCartData}) {
+function ShopModal({
+  setModalProduct,
+  shopModalId,
+  setProduct,
+  setCartData,
+  setSearchFilterData,
+}) {
   const { id } = useParams();
   const [oneProductData, setProductData] = useState(null);
   const [mainImg, setMainImg] = useState("");
@@ -15,7 +21,7 @@ function ShopModal({ setModalProduct, shopModalId , setCartData}) {
   const [sizeAdd, setSizeAdd] = useState(null);
   const [counterShopModal, setCounterShopModal] = useState(1);
   const [shopModalLoader, setShopModalLoader] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!shopModalId) return;
@@ -42,6 +48,9 @@ function ShopModal({ setModalProduct, shopModalId , setCartData}) {
           className="chiqish"
           onClick={() => {
             setModalProduct(false);
+            setColorAdd(null);
+            setSizeAdd(null);
+            setCounterShopModal(1);
           }}
         >
           <FaXmark />
@@ -53,6 +62,9 @@ function ShopModal({ setModalProduct, shopModalId , setCartData}) {
             </div>
           ) : (
             <Link
+              onClick={() => {
+                setModalProduct(false);
+              }}
               to={`/deteils/${oneProductData?.id}`}
               className="shop-modal-rasmi"
             >
@@ -60,7 +72,13 @@ function ShopModal({ setModalProduct, shopModalId , setCartData}) {
             </Link>
           )}
 
-          <Link className="btn-more" to={`/deteils/${oneProductData?.id}`}>
+          <Link
+            onClick={() => {
+              setModalProduct(false);
+            }}
+            className="btn-more"
+            to={`/deteils/${oneProductData?.id}`}
+          >
             Show More <FaArrowRightLong />
           </Link>
         </div>
@@ -181,13 +199,18 @@ function ShopModal({ setModalProduct, shopModalId , setCartData}) {
                   );
                   return;
                 }
-                setModalProduct(false)
+                setModalProduct(false);
+                setColorAdd(null);
+                setSizeAdd(null);
+                setCounterShopModal(1);
                 addToCart(
                   oneProductData?.id,
                   counterShopModal,
                   colorAdd,
                   sizeAdd,
-                  setCartData
+                  setCartData,
+                  setProduct,
+                  setSearchFilterData,
                 );
               } else {
                 navigate("/signup");

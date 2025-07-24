@@ -27,13 +27,19 @@
   width: 100%;
   height: 350px;
   overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-
+.quanlity-tartibi::-webkit-scrollbar {
+  display: none;
+}
 
 .quanlity {
+  margin-top: 5px !important;
   text-decoration: none;
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -73,6 +79,7 @@
 .cart-img img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .cart-img span {
